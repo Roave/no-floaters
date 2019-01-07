@@ -19,5 +19,6 @@ Check:
   - chmod +x composer.phar
   - mv composer.phar /usr/bin/composer
   - composer install
+  - echo "memory_limit = 512M" > "$PHP_INI_DIR/php.ini"
   script:
   - vendor/bin/phing
