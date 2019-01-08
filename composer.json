@@ -10,6 +10,7 @@
 		"phpstan/phpstan": "^0.10"
 	},
 	"require-dev": {
+		"maglnet/composer-require-checker": "^1.1.0",
 		"phing/phing": "^2.16.0",
 		"phpstan/phpstan-phpunit": "^0.10",
 		"phpstan/phpstan-strict-rules": "^0.10",
