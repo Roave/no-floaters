@@ -9,6 +9,7 @@
     beStrictAboutCoversAnnotation="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTodoAnnotatedTests="true"
+    verbose="true"
 >
     <testsuites>
         <testsuite name="PHPStan Disallow Float Test Suite">
