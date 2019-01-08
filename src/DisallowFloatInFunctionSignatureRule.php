@@ -21,7 +21,7 @@ use function array_merge;
 use function array_values;
 use function sprintf;
 
-class DisallowFloatInFunctionSignatureRule implements Rule
+final class DisallowFloatInFunctionSignatureRule implements Rule
 {
     /** @var Broker */
     private $broker;

@@ -20,7 +20,7 @@ use function array_merge;
 use function array_values;
 use function sprintf;
 
-class DisallowFloatInMethodSignatureRule implements Rule
+final class DisallowFloatInMethodSignatureRule implements Rule
 {
     public function getNodeType() : string
     {

@@ -10,7 +10,7 @@ use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
 
-class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
+final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule
     {

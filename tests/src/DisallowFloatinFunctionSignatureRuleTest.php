@@ -7,7 +7,7 @@ namespace Roave\PHPStan\Rules\Floats;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 
-class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
+final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule
     {

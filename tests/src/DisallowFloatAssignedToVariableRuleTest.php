@@ -8,7 +8,7 @@ use PhpParser\PrettyPrinter\Standard;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 
-class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
+final class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule
     {

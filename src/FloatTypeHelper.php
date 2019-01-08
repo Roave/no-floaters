@@ -8,7 +8,8 @@ use PHPStan\Type\FloatType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 
-class FloatTypeHelper
+/** @internal class is only for internal tooling use: do not import it in your own projects */
+final class FloatTypeHelper
 {
     public static function isFloat(Type $type) : bool
     {

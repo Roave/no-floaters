@@ -12,7 +12,7 @@ use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\VerbosityLevel;
 use function sprintf;
 
-class DisallowFloatPropertyTypeRule implements Rule
+final class DisallowFloatPropertyTypeRule implements Rule
 {
     public function getNodeType() : string
     {

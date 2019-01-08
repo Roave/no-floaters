@@ -10,7 +10,7 @@ use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
 
-class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
+final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule
     {

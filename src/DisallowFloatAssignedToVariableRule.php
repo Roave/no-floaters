@@ -11,7 +11,7 @@ use PHPStan\Rules\Rule;
 use PHPStan\Type\VerbosityLevel;
 use function sprintf;
 
-class DisallowFloatAssignedToVariableRule implements Rule
+final class DisallowFloatAssignedToVariableRule implements Rule
 {
     /** @var Standard */
     private $printer;
