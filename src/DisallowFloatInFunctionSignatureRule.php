@@ -9,8 +9,16 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Function_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Broker\Broker;
+use PHPStan\Reflection\FunctionReflection;
+use PHPStan\Reflection\ParameterReflection;
+use PHPStan\Reflection\ParametersAcceptorWithPhpDocs;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\VerbosityLevel;
+use function array_filter;
+use function array_keys;
+use function array_map;
+use function array_merge;
+use function array_values;
 use function sprintf;
 
 class DisallowFloatInFunctionSignatureRule implements Rule
@@ -43,32 +51,55 @@ class DisallowFloatInFunctionSignatureRule implements Rule
         $functionReflection = $this->broker->getCustomFunction($functionName, $scope);
 
         $errors = [];
+
         foreach ($functionReflection->getVariants() as $functionVariant) {
-            foreach ($functionVariant->getParameters() as $i => $parameter) {
+            $errors[] = $this->violationsForParameters($functionVariant, $functionReflection);
+            $errors[] = $this->returnTypeViolations($functionVariant, $functionReflection);
+        }
+
+        return array_filter(array_merge([], ...$errors));
+    }
+
+    /** @return string[] */
+    private function returnTypeViolations(
+        ParametersAcceptorWithPhpDocs $function,
+        FunctionReflection $functionReflection
+    ) : array {
+        if (! FloatTypeHelper::isFloat($function->getReturnType())) {
+            return [];
+        }
+
+        return [sprintf(
+            'Function %s() cannot have %s as its return type - floats are not allowed.',
+            $functionReflection->getName(),
+            $function->getReturnType()->describe(VerbosityLevel::typeOnly())
+        ),
+        ];
+    }
+
+    /** @return string[]|null[] */
+    private function violationsForParameters(
+        ParametersAcceptorWithPhpDocs $function,
+        FunctionReflection $functionReflection
+    ) : array {
+        $parameters = $function->getParameters();
+
+        return array_map(
+            static function (ParameterReflection $parameter, int $index) use ($functionReflection) : ?string {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
-                    continue;
+                    return null;
                 }
 
-                $errors[] = sprintf(
+                return sprintf(
                     'Parameter #%d $%s of function %s() cannot have %s as its type - floats are not allowed.',
-                    $i + 1,
+                    $index + 1,
                     $parameter->getName(),
                     $functionReflection->getName(),
                     $parameter->getType()->describe(VerbosityLevel::typeOnly())
                 );
-            }
-
-            if (! FloatTypeHelper::isFloat($functionVariant->getReturnType())) {
-                continue;
-            }
-
-            $errors[] = sprintf(
-                'Function %s() cannot have %s as its return type - floats are not allowed.',
-                $functionReflection->getName(),
-                $functionVariant->getReturnType()->describe(VerbosityLevel::typeOnly())
-            );
-        }
-
-        return $errors;
+            },
+            array_values($parameters),
+            array_keys($parameters)
+        );
     }
 }
