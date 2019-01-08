@@ -51,4 +51,9 @@ class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
             ],
         ]);
     }
+
+    public function testNotAutoloadedFunction() : void
+    {
+        $this->analyse([__DIR__ . '/data/functionNotAutoloaded.php'], []);
+    }
 }
