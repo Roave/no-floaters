@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Roave\PHPStan\Rules\Floats;
 
@@ -8,32 +10,30 @@ use PHPStan\Testing\RuleTestCase;
 
 class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
 {
+    protected function getRule() : Rule
+    {
+        return new DisallowFloatAssignedToVariableRule(new Standard());
+    }
 
-	protected function getRule(): Rule
-	{
-		return new DisallowFloatAssignedToVariableRule(new Standard());
-	}
-
-	public function testRule(): void
-	{
-		$this->analyse([__DIR__ . '/data/assign.php'], [
-			[
-				'Cannot assign float to $test - floats are not allowed.',
-				18,
-			],
-			[
-				'Cannot assign float|int to $test2 - floats are not allowed.',
-				19,
-			],
-			[
-				'Cannot assign float to $this->foo - floats are not allowed.',
-				21,
-			],
-			[
-				'Cannot assign float to $this->bar[\'test\'] - floats are not allowed.',
-				22,
-			],
-		]);
-	}
-
+    public function testRule() : void
+    {
+        $this->analyse([__DIR__ . '/data/assign.php'], [
+            [
+                'Cannot assign float to $test - floats are not allowed.',
+                18,
+            ],
+            [
+                'Cannot assign float|int to $test2 - floats are not allowed.',
+                19,
+            ],
+            [
+                'Cannot assign float to $this->foo - floats are not allowed.',
+                21,
+            ],
+            [
+                'Cannot assign float to $this->bar[\'test\'] - floats are not allowed.',
+                22,
+            ],
+        ]);
+    }
 }

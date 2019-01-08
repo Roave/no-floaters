@@ -1,72 +1,74 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Roave\PHPStan\Rules\Floats;
 
 use PhpParser\Node;
 use PhpParser\Node\Name;
+use PhpParser\Node\Stmt\Function_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Broker\Broker;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\VerbosityLevel;
+use function sprintf;
 
 class DisallowFloatInFunctionSignatureRule implements Rule
 {
+    /** @var Broker */
+    private $broker;
 
-	/** @var \PHPStan\Broker\Broker */
-	private $broker;
+    public function __construct(Broker $broker)
+    {
+        $this->broker = $broker;
+    }
 
-	public function __construct(Broker $broker)
-	{
-		$this->broker = $broker;
-	}
+    public function getNodeType() : string
+    {
+        return Node\Stmt\Function_::class;
+    }
 
-	public function getNodeType(): string
-	{
-		return Node\Stmt\Function_::class;
-	}
+    /**
+     * @param Function_ $node
+     *
+     * @return string[]
+     */
+    public function processNode(Node $node, Scope $scope) : array
+    {
+        $functionName = new Name($node->name->toString());
+        if (! $this->broker->hasCustomFunction($functionName, $scope)) {
+            return [];
+        }
 
-	/**
-	 * @param \PhpParser\Node\Stmt\Function_ $node
-	 * @param \PHPStan\Analyser\Scope $scope
-	 * @return string[]
-	 */
-	public function processNode(Node $node, Scope $scope): array
-	{
-		$functionName = new Name($node->name->toString());
-		if (!$this->broker->hasCustomFunction($functionName, $scope)) {
-			return [];
-		}
+        $functionReflection = $this->broker->getCustomFunction($functionName, $scope);
 
-		$functionReflection = $this->broker->getCustomFunction($functionName, $scope);
+        $errors = [];
+        foreach ($functionReflection->getVariants() as $functionVariant) {
+            foreach ($functionVariant->getParameters() as $i => $parameter) {
+                if (! FloatTypeHelper::isFloat($parameter->getType())) {
+                    continue;
+                }
 
-		$errors = [];
-		foreach ($functionReflection->getVariants() as $functionVariant) {
-			foreach ($functionVariant->getParameters() as $i => $parameter) {
-				if (!FloatTypeHelper::isFloat($parameter->getType())) {
-					continue;
-				}
+                $errors[] = sprintf(
+                    'Parameter #%d $%s of function %s() cannot have %s as its type - floats are not allowed.',
+                    $i + 1,
+                    $parameter->getName(),
+                    $functionReflection->getName(),
+                    $parameter->getType()->describe(VerbosityLevel::typeOnly())
+                );
+            }
 
-				$errors[] = sprintf(
-					'Parameter #%d $%s of function %s() cannot have %s as its type - floats are not allowed.',
-					$i + 1,
-					$parameter->getName(),
-					$functionReflection->getName(),
-					$parameter->getType()->describe(VerbosityLevel::typeOnly())
-				);
-			}
+            if (! FloatTypeHelper::isFloat($functionVariant->getReturnType())) {
+                continue;
+            }
 
-			if (!FloatTypeHelper::isFloat($functionVariant->getReturnType())) {
-				continue;
-			}
+            $errors[] = sprintf(
+                'Function %s() cannot have %s as its return type - floats are not allowed.',
+                $functionReflection->getName(),
+                $functionVariant->getReturnType()->describe(VerbosityLevel::typeOnly())
+            );
+        }
 
-			$errors[] = sprintf(
-				'Function %s() cannot have %s as its return type - floats are not allowed.',
-				$functionReflection->getName(),
-				$functionVariant->getReturnType()->describe(VerbosityLevel::typeOnly())
-			);
-		}
-
-		return $errors;
-	}
-
+        return $errors;
+    }
 }
