@@ -35,6 +35,25 @@ class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
         ]);
     }
 
+    public function testRuleShowsAllFloatParametersAsViolations() : void
+    {
+        require_once __DIR__ . '/data/methodWithInterpolatedFloatAndNotFloatParameters.php';
+        $this->analyse([__DIR__ . '/data/methodWithInterpolatedFloatAndNotFloatParameters.php'], [
+            [
+                'Parameter #1 $a of method DisallowFloatsInMethodSignatures\Bar::doFoo() cannot have float as its type - floats are not allowed.',
+                8,
+            ],
+            [
+                'Parameter #3 $c of method DisallowFloatsInMethodSignatures\Bar::doFoo() cannot have float as its type - floats are not allowed.',
+                8,
+            ],
+            [
+                'Parameter #5 $e of method DisallowFloatsInMethodSignatures\Bar::doFoo() cannot have float as its type - floats are not allowed.',
+                8,
+            ],
+        ]);
+    }
+
     /**
      * Verifies that the impossible scenario of a method signature is not declared in a class method
      */
