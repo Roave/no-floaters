@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Roave\PHPStan\Rules\Floats;
 
+use PhpParser\Node;
+use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
 
 class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
@@ -30,5 +33,24 @@ class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
                 14,
             ],
         ]);
+    }
+
+    /**
+     * Verifies that the impossible scenario of a method signature is not declared in a class method
+     */
+    public function testRuleWillNotWorkWhenNotInClassScope() : void
+    {
+        $rule = new DisallowFloatInMethodSignatureRule();
+
+        $node  = $this->createMock(Node::class);
+        $scope = $this->createMock(Scope::class);
+
+        $scope
+            ->method('isInClass')
+            ->willReturn(false);
+
+        $this->expectException(ShouldNotHappenException::class);
+
+        $rule->processNode($node, $scope);
     }
 }
