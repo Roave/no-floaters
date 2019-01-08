@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Roave\PHPStan\Rules\Floats;
 
-use PhpParser\Node;
+use PhpParser\Node\Stmt\PropertyProperty;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
@@ -38,7 +38,7 @@ class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
     {
         $rule = new DisallowFloatPropertyTypeRule();
 
-        $node  = $this->createMock(Node::class);
+        $node  = $this->createMock(PropertyProperty::class);
         $scope = $this->createMock(Scope::class);
 
         $scope

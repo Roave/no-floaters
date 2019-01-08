@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Roave\PHPStan\Rules\Floats;
 
-use PhpParser\Node;
+use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
@@ -61,7 +61,7 @@ class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
     {
         $rule = new DisallowFloatInMethodSignatureRule();
 
-        $node  = $this->createMock(Node::class);
+        $node  = $this->createMock(ClassMethod::class);
         $scope = $this->createMock(Scope::class);
 
         $scope
