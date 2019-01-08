@@ -1,7 +1,6 @@
 language: php
 
 before_script:
-  - rm composer.lock
   - travis_retry composer update --prefer-dist $DEPENDENCIES
 
 env:
