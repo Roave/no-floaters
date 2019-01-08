@@ -20,20 +20,20 @@ matrix:
 
 jobs:
   include:
-    - stage: Test
+    - stage: Static Analysis
       script: vendor/bin/phpstan analyse
 
     - stage: Test
       script: vendor/bin/phpunit
 
-    - stage: Test
+    - stage: Mutation Tests
       script: vendor/bin/infection --min-msi=100 --min-covered-msi=100
 
-    - stage: Test
+    - stage: Code Style
       script: vendor/bin/phpcs
 
-    - stage: Test
+    - stage: Dependencies Check
       script: vendor/bin/composer-require-checker
 
-    - stage: Test
+    - stage: Backwards Compatibility Check
       script: vendor/bin/roave-backward-compatibility-check
