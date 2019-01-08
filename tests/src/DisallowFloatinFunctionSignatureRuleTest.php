@@ -52,6 +52,25 @@ class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
         ]);
     }
 
+    public function testRuleShowsAllFloatParametersAsViolations() : void
+    {
+        require_once __DIR__ . '/data/functionWithInterpolatedFloatAndNonFloatParameters.php';
+        $this->analyse([__DIR__ . '/data/functionWithInterpolatedFloatAndNonFloatParameters.php'], [
+            [
+                'Parameter #1 $a of function DisallowFloatsInFunctionSignatures\functionWithInterpolatedFloatAndNonFloatParameters() cannot have float as its type - floats are not allowed.',
+                6,
+            ],
+            [
+                'Parameter #3 $c of function DisallowFloatsInFunctionSignatures\functionWithInterpolatedFloatAndNonFloatParameters() cannot have float as its type - floats are not allowed.',
+                6,
+            ],
+            [
+                'Parameter #5 $e of function DisallowFloatsInFunctionSignatures\functionWithInterpolatedFloatAndNonFloatParameters() cannot have float as its type - floats are not allowed.',
+                6,
+            ],
+        ]);
+    }
+
     public function testNotAutoloadedFunction() : void
     {
         $this->analyse([__DIR__ . '/data/functionNotAutoloaded.php'], []);
