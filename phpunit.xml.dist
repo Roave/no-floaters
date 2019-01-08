@@ -13,7 +13,7 @@
 >
     <testsuites>
         <testsuite name="PHPStan Disallow Float Test Suite">
-            <directory>./tests</directory>
+            <directory>./tests/src</directory>
         </testsuite>
     </testsuites>
 

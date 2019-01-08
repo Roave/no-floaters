@@ -7,10 +7,8 @@ includes:
 parameters:
 	paths:
 		- %currentWorkingDirectory%/src
-		- %currentWorkingDirectory%/tests
+		- %currentWorkingDirectory%/tests/src
 	level: 7
-	excludes_analyse:
-		- %currentWorkingDirectory%/tests/*/data/*
 
 services:
 	scopeIsInClass:
