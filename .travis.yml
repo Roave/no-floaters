@@ -24,7 +24,7 @@ jobs:
       script: vendor/bin/phpstan analyse
 
     - stage: Test
-      script: vendor/bin/phpunit --min-msi=100 --min-covered-msi=100
+      script: vendor/bin/phpunit
 
     - stage: Test
       script: vendor/bin/infection --min-msi=100 --min-covered-msi=100
