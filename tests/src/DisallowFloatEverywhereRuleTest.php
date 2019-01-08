@@ -15,7 +15,7 @@ class DisallowFloatEverywhereRuleTest extends RuleTestCase
 
 	public function testRule(): void
 	{
-		$this->analyse([__DIR__ . '/data/expr.php'], [
+		$this->analyse([__DIR__ . '/../asset/expr.php'], [
 			[
 				'Cannot have float as a result type of this expression - floats are not allowed.',
 				6,
