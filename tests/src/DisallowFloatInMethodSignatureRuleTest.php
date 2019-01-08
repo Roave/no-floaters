@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Roave\PHPStan\Rules\Floats;
+namespace Roave\PHPStanTest\Rules\Floats;
 
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
+use Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule;
 
 final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
 {
@@ -19,7 +20,7 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
 
     public function testRule() : void
     {
-        $this->analyse([__DIR__ . '/data/method.php'], [
+        $this->analyse([__DIR__ . '/../asset/method.php'], [
             [
                 'Parameter #1 $float of method DisallowFloatsInMethodSignatures\Foo::doFoo() cannot have float as its type - floats are not allowed.',
                 14,
@@ -37,8 +38,7 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
 
     public function testRuleShowsAllFloatParametersAsViolations() : void
     {
-        require_once __DIR__ . '/data/methodWithInterpolatedFloatAndNotFloatParameters.php';
-        $this->analyse([__DIR__ . '/data/methodWithInterpolatedFloatAndNotFloatParameters.php'], [
+        $this->analyse([__DIR__ . '/../asset/methodWithInterpolatedFloatAndNotFloatParameters.php'], [
             [
                 'Parameter #1 $a of method DisallowFloatsInMethodSignatures\Bar::doFoo() cannot have float as its type - floats are not allowed.',
                 8,

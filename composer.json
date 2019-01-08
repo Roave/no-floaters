@@ -26,8 +26,11 @@
 	},
 	"autoload-dev": {
 		"classmap": [
-			"tests/"
-		]
+			"tests/asset"
+		],
+		"psr-4": {
+			"Roave\\PHPStanTest\\": "tests/src"
+		}
 	},
 	"config": {
 		"sort-packages": true

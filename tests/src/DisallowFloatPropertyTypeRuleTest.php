@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Roave\PHPStan\Rules\Floats;
+namespace Roave\PHPStanTest\Rules\Floats;
 
 use PhpParser\Node\Stmt\PropertyProperty;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
+use Roave\PHPStan\Rules\Floats\DisallowFloatPropertyTypeRule;
 
 final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
 {
@@ -19,7 +20,7 @@ final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
 
     public function testRule() : void
     {
-        $this->analyse([__DIR__ . '/data/property.php'], [
+        $this->analyse([__DIR__ . '/../asset/property.php'], [
             [
                 'Property DisallowFloatsInProperties\Foo::$foo cannot have float as its type - floats are not allowed.',
                 9,

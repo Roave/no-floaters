@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Roave\PHPStan\Rules\Floats;
+namespace Roave\PHPStanTest\Rules\Floats;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
+use Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule;
 
 final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
 {
@@ -16,8 +17,8 @@ final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
 
     public function testRule() : void
     {
-        require_once __DIR__ . '/data/function.php';
-        $this->analyse([__DIR__ . '/data/function.php'], [
+        require_once __DIR__ . '/../asset/function.php';
+        $this->analyse([__DIR__ . '/../asset/function.php'], [
             [
                 'Parameter #1 $float of function DisallowFloatsInFunctionSignatures\doFoo() cannot have float as its type - floats are not allowed.',
                 11,
@@ -35,8 +36,8 @@ final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
 
     public function testRuleWithoutNamespace() : void
     {
-        require_once __DIR__ . '/data/functionWithoutNamespace.php';
-        $this->analyse([__DIR__ . '/data/functionWithoutNamespace.php'], [
+        require_once __DIR__ . '/../asset/functionWithoutNamespace.php';
+        $this->analyse([__DIR__ . '/../asset/functionWithoutNamespace.php'], [
             [
                 'Parameter #1 $float of function doFoo() cannot have float as its type - floats are not allowed.',
                 9,
@@ -54,8 +55,8 @@ final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
 
     public function testRuleShowsAllFloatParametersAsViolations() : void
     {
-        require_once __DIR__ . '/data/functionWithInterpolatedFloatAndNonFloatParameters.php';
-        $this->analyse([__DIR__ . '/data/functionWithInterpolatedFloatAndNonFloatParameters.php'], [
+        require_once __DIR__ . '/../asset/functionWithInterpolatedFloatAndNonFloatParameters.php';
+        $this->analyse([__DIR__ . '/../asset/functionWithInterpolatedFloatAndNonFloatParameters.php'], [
             [
                 'Parameter #1 $a of function DisallowFloatsInFunctionSignatures\functionWithInterpolatedFloatAndNonFloatParameters() cannot have float as its type - floats are not allowed.',
                 6,
@@ -73,6 +74,6 @@ final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
 
     public function testNotAutoloadedFunction() : void
     {
-        $this->analyse([__DIR__ . '/data/functionNotAutoloaded.php'], []);
+        $this->analyse([__DIR__ . '/../asset/functionNotAutoloaded.php'], []);
     }
 }
