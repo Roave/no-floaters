@@ -29,7 +29,7 @@
 			"tests/asset"
 		],
 		"psr-4": {
-			"Roave\\PHPStanTest\\": "tests/src"
+			"Roave\\PHPStanTest\\Rules\\Floats\\": "tests/src"
 		}
 	},
 	"config": {
