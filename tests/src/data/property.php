@@ -11,4 +11,10 @@ class Foo
 	/** @var float|int */
 	private $bar;
 
+    /** @var int */
+    private $baz;
+
+    /** @var mixed */
+    private $taz;
+
 }
