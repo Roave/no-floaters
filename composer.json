@@ -13,7 +13,6 @@
 		"doctrine/coding-standard": "^5.0.0",
 		"infection/infection": "^0.11.4",
 		"maglnet/composer-require-checker": "^1.1.0",
-		"phing/phing": "^2.16.0",
 		"phpstan/phpstan-phpunit": "^0.10",
 		"phpstan/phpstan-strict-rules": "^0.10",
 		"phpunit/phpunit": "^7.4",
