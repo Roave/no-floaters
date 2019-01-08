@@ -35,3 +35,6 @@ jobs:
 
     - stage: Test
       script: vendor/bin/composer-require-checker
+
+    - stage: Test
+      script: vendor/bin/roave-backward-compatibility-check
