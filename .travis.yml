@@ -18,6 +18,10 @@ matrix:
     - php: 7.3
     - php: nightly
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 jobs:
   include:
     - stage: Static Analysis
