@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Roave\PHPStan\Rules\Floats;
 
@@ -7,32 +9,30 @@ use PHPStan\Testing\RuleTestCase;
 
 class DisallowFloatEverywhereRuleTest extends RuleTestCase
 {
+    protected function getRule() : Rule
+    {
+        return new DisallowFloatEverywhereRule();
+    }
 
-	protected function getRule(): Rule
-	{
-		return new DisallowFloatEverywhereRule();
-	}
-
-	public function testRule(): void
-	{
-		$this->analyse([__DIR__ . '/../asset/expr.php'], [
-			[
-				'Cannot have float as a result type of this expression - floats are not allowed.',
-				6,
-			],
-			[
-				'Cannot have float as a result type of this expression - floats are not allowed.',
-				7,
-			],
-			[
-				'Cannot have float as a result type of this expression - floats are not allowed.',
-				7,
-			],
-			[
-				'Cannot have float as a result type of this expression - floats are not allowed.',
-				10,
-			],
-		]);
-	}
-
+    public function testRule() : void
+    {
+        $this->analyse([__DIR__ . '/../asset/expr.php'], [
+            [
+                'Cannot have float as a result type of this expression - floats are not allowed.',
+                6,
+            ],
+            [
+                'Cannot have float as a result type of this expression - floats are not allowed.',
+                7,
+            ],
+            [
+                'Cannot have float as a result type of this expression - floats are not allowed.',
+                7,
+            ],
+            [
+                'Cannot have float as a result type of this expression - floats are not allowed.',
+                10,
+            ],
+        ]);
+    }
 }
