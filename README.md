@@ -78,3 +78,8 @@ vendor/bin/phpstan analyse example-file.php -l 7
  [ERROR] Found 1 error
 
 ```
+
+## Professional Support
+
+If you need help with setting up this library in your project,
+you can contact us at team@roave.com for consulting/support.
