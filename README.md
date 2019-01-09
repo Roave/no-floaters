@@ -1,5 +1,7 @@
 # roave/no-floaters
 
+![`roave/no-floaters`](logo/roave-no-floaters.png)
+
 This library is a [PHPStan](https://github.com/phpstan/phpstan) plugin
 that disallows:
 
