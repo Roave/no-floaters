@@ -1,0 +1,20 @@
+includes:
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+	- vendor/phpstan/phpstan-strict-rules/rules.neon
+	- rules.neon
+
+parameters:
+	paths:
+		- %currentWorkingDirectory%/src
+		- %currentWorkingDirectory%/tests/src
+	level: 7
+
+services:
+	scopeIsInClass:
+		class: PHPStan\Internal\ScopeIsInClassTypeSpecifyingExtension
+		arguments:
+			isInMethodName: isInClass
+			removeNullMethodName: getClassReflection
+		tags:
+			- phpstan.typeSpecifier.methodTypeSpecifyingExtension

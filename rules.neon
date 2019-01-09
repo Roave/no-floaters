@@ -1,0 +1,5 @@
+rules:
+	- Roave\PHPStan\Rules\Floats\DisallowFloatAssignedToVariableRule
+	- Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule
+	- Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule
+	- Roave\PHPStan\Rules\Floats\DisallowFloatPropertyTypeRule
