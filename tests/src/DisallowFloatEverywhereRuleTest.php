@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Roave\PHPStan\Rules\Floats;
+namespace Roave\PHPStanTest\Rules\Floats;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
+use Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule;
 
 class DisallowFloatEverywhereRuleTest extends RuleTestCase
 {
