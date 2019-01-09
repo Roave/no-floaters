@@ -1,16 +1,16 @@
 {
-	"symbol-whitelist" : [
-		"null", "true", "false",
-		"static", "self", "parent",
-		"array", "string", "int", "float", "bool", "iterable", "callable", "void", "object"
-	],
-	"php-core-extensions" : [
-		"Core",
-		"date",
-		"pcre",
-		"Reflection",
-		"SPL",
-		"standard",
-		"mbstring"
-	]
+    "symbol-whitelist" : [
+        "null", "true", "false",
+        "static", "self", "parent",
+        "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object"
+    ],
+    "php-core-extensions" : [
+        "Core",
+        "date",
+        "pcre",
+        "Reflection",
+        "SPL",
+        "standard",
+        "mbstring"
+    ]
 }
