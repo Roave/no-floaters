@@ -24,4 +24,11 @@ class Foo
         $test3 = $str;
     }
 
+    public function doBar()
+    {
+        $test = 0;
+        $test += 1;
+        $test += 3.14;
+    }
+
 }

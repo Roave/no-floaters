@@ -3,3 +3,14 @@ rules:
 	- Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule
 	- Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule
 	- Roave\PHPStan\Rules\Floats\DisallowFloatPropertyTypeRule
+
+parameters:
+	disallowFloatsEverywhere: false
+
+conditionalTags:
+	Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule:
+		phpstan.rules.rule: %disallowFloatsEverywhere%
+
+services:
+	-
+		class: Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule
