@@ -9,10 +9,10 @@ namespace DisallowFloatsInFunctionSignatures;
  * @return float
  */
 function doFoo(
-	float $float,
-	$intOrFloat,
-	string $string,
-	$mixed
+    float $float,
+    $intOrFloat,
+    string $string,
+    $mixed
 ): float
 {
 
