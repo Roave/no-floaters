@@ -1,6 +1,6 @@
 {
-    "name": "roave/phpstan-disallow-float",
-    "description": "PHPStan Disallow Float Rules",
+    "name": "roave/no-floaters",
+    "description": "PHPStan Rules to Disallow Float proliferation in contexts where IEEE-754 rounding errors are not acceptable",
     "license": [
         "MIT"
     ],
