@@ -9,18 +9,17 @@ use PhpParser\Node\Expr;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\VerbosityLevel;
+use function assert;
 use function sprintf;
 
 class DisallowFloatEverywhereRule implements Rule
 {
     public function getNodeType() : string
     {
-        return Node\Expr::class;
+        return Expr::class;
     }
 
     /**
-     * @param Expr $node
-     *
      * @return string[]
      */
     public function processNode(Node $node, Scope $scope) : array
@@ -30,6 +29,8 @@ class DisallowFloatEverywhereRule implements Rule
         ) {
             return [];
         }
+
+        assert($node instanceof Expr);
 
         $nodeType = $scope->getType($node);
         if (! FloatTypeHelper::isFloat($nodeType)) {
