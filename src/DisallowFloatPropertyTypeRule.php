@@ -16,16 +16,16 @@ final class DisallowFloatPropertyTypeRule implements Rule
 {
     public function getNodeType() : string
     {
-        return Node\Stmt\PropertyProperty::class;
+        return PropertyProperty::class;
     }
 
     /**
-     * @param PropertyProperty $node
-     *
      * @return string[]
      */
     public function processNode(Node $node, Scope $scope) : array
     {
+        assert($node instanceof PropertyProperty);
+        
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();
         }

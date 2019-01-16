@@ -24,16 +24,16 @@ final class DisallowFloatInMethodSignatureRule implements Rule
 {
     public function getNodeType() : string
     {
-        return Node\Stmt\ClassMethod::class;
+        return ClassMethod::class;
     }
 
     /**
-     * @param ClassMethod $node
-     *
      * @return string[]
      */
     public function processNode(Node $node, Scope $scope) : array
     {
+        assert($node instanceof ClassMethod);
+
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();
         }

@@ -33,16 +33,16 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
 
     public function getNodeType() : string
     {
-        return Node\Stmt\Function_::class;
+        return Function_::class;
     }
 
     /**
-     * @param Function_ $node
-     *
      * @return string[]
      */
     public function processNode(Node $node, Scope $scope) : array
     {
+        assert($node instanceof Function_);
+        
         $functionName = new Name($node->name->toString());
         if (! $this->broker->hasCustomFunction($functionName, $scope)) {
             return [];
