@@ -10,6 +10,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\VerbosityLevel;
+use function assert;
 use function sprintf;
 
 final class DisallowFloatPropertyTypeRule implements Rule
@@ -25,7 +26,7 @@ final class DisallowFloatPropertyTypeRule implements Rule
     public function processNode(Node $node, Scope $scope) : array
     {
         assert($node instanceof PropertyProperty);
-        
+
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();
         }

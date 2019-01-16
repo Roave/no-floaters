@@ -19,6 +19,7 @@ use function array_keys;
 use function array_map;
 use function array_merge;
 use function array_values;
+use function assert;
 use function sprintf;
 
 final class DisallowFloatInFunctionSignatureRule implements Rule
@@ -42,7 +43,7 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
     public function processNode(Node $node, Scope $scope) : array
     {
         assert($node instanceof Function_);
-        
+
         $functionName = new Name($node->name->toString());
         if (! $this->broker->hasCustomFunction($functionName, $scope)) {
             return [];

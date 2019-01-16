@@ -9,6 +9,7 @@ use PhpParser\Node\Expr;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\VerbosityLevel;
+use function assert;
 use function sprintf;
 
 class DisallowFloatEverywhereRule implements Rule
