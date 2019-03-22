@@ -2,6 +2,9 @@
 
 ![`roave/no-floaters`](logo/roave-no-floaters.png)
 
+[![Build Status](https://travis-ci.org/Roave/no-floaters.png?branch=master)](https://travis-ci.org/Roave/no-floaters)
+[![Latest Stable Version](https://poser.pugx.org/roave/no-floaters/v/stable.png)](https://packagist.org/packages/roave/no-floaters)
+
 This library is a [PHPStan](https://github.com/phpstan/phpstan) plugin
 that disallows:
 
