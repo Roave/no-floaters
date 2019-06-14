@@ -69,6 +69,7 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
             ->willReturn(false);
 
         $this->expectException(ShouldNotHappenException::class);
+        $this->expectExceptionMessage('Internal error.');
 
         $rule->processNode($node, $scope);
     }
