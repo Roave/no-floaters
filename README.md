@@ -22,7 +22,7 @@ An example of such problems can be seen with the following typical
 [example](https://3v4l.org/MJqJe):
 
 ```php
-var_dump((0.7 + 0.1) === 0.8);
+var_dump((0.7 + 0.1) === 0.8); // output: bool(false)
 ```
 
 This can mean no trouble at all, or a lot of trouble, depending
