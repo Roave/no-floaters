@@ -14,3 +14,6 @@ conditionalTags:
 services:
 	-
 		class: Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule
+
+parametersSchema:
+	disallowFloatsEverywhere: bool()
