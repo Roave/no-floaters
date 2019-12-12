@@ -11,6 +11,8 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\ParametersAcceptor;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleError;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\VerbosityLevel;
 use function array_filter;
@@ -18,9 +20,11 @@ use function array_keys;
 use function array_map;
 use function array_merge;
 use function array_values;
-use function assert;
 use function sprintf;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\ClassMethod>
+ */
 final class DisallowFloatInMethodSignatureRule implements Rule
 {
     public function getNodeType() : string
@@ -29,12 +33,10 @@ final class DisallowFloatInMethodSignatureRule implements Rule
     }
 
     /**
-     * @return string[]
+     * {@inheritDoc}
      */
     public function processNode(Node $node, Scope $scope) : array
     {
-        assert($node instanceof ClassMethod);
-
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();
         }
@@ -53,7 +55,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
         return array_filter(array_merge([], ...$errors));
     }
 
-    /** @return string[] */
+    /** @return RuleError[] */
     private function returnTypeViolations(
         ParametersAcceptor $method,
         MethodReflection $methodReflection
@@ -62,16 +64,16 @@ final class DisallowFloatInMethodSignatureRule implements Rule
             return [];
         }
 
-        return [sprintf(
+        return [RuleErrorBuilder::message(sprintf(
             'Method %s::%s() cannot have %s as its return type - floats are not allowed.',
             $methodReflection->getDeclaringClass()->getDisplayName(),
             $methodReflection->getName(),
             $method->getReturnType()->describe(VerbosityLevel::typeOnly())
-        ),
+        ))->build(),
         ];
     }
 
-    /** @return string[]|null[] */
+    /** @return RuleError[]|null[] */
     private function violationsForParameters(
         ParametersAcceptor $function,
         MethodReflection $methodReflection
@@ -79,19 +81,19 @@ final class DisallowFloatInMethodSignatureRule implements Rule
         $parameters = $function->getParameters();
 
         return array_map(
-            static function (ParameterReflection $parameter, int $index) use ($methodReflection) : ?string {
+            static function (ParameterReflection $parameter, int $index) use ($methodReflection) : ?RuleError {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
                     return null;
                 }
 
-                return sprintf(
+                return RuleErrorBuilder::message(sprintf(
                     'Parameter #%d $%s of method %s::%s() cannot have %s as its type - floats are not allowed.',
                     $index + 1,
                     $parameter->getName(),
                     $methodReflection->getDeclaringClass()->getDisplayName(),
                     $methodReflection->getName(),
                     $parameter->getType()->describe(VerbosityLevel::typeOnly())
-                );
+                ))->build();
             },
             array_values($parameters),
             array_keys($parameters)

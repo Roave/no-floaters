@@ -11,6 +11,9 @@ use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule;
 
+/**
+ * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule>
+ */
 final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule

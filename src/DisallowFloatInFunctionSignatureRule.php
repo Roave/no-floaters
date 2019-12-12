@@ -11,17 +11,21 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Broker\Broker;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\ParameterReflection;
-use PHPStan\Reflection\ParametersAcceptorWithPhpDocs;
+use PHPStan\Reflection\ParametersAcceptor;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleError;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\VerbosityLevel;
 use function array_filter;
 use function array_keys;
 use function array_map;
 use function array_merge;
 use function array_values;
-use function assert;
 use function sprintf;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\Function_>
+ */
 final class DisallowFloatInFunctionSignatureRule implements Rule
 {
     /** @var Broker */
@@ -38,18 +42,16 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
     }
 
     /**
-     * @return string[]
+     * {@inheritDoc}
      */
     public function processNode(Node $node, Scope $scope) : array
     {
-        assert($node instanceof Function_);
-
         $functionName = new Name($node->name->toString());
-        if (! $this->broker->hasCustomFunction($functionName, $scope)) {
+        if (! $this->broker->hasFunction($functionName, $scope)) {
             return [];
         }
 
-        $functionReflection = $this->broker->getCustomFunction($functionName, $scope);
+        $functionReflection = $this->broker->getFunction($functionName, $scope);
 
         $errors = [];
 
@@ -61,43 +63,43 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
         return array_filter(array_merge([], ...$errors));
     }
 
-    /** @return string[] */
+    /** @return RuleError[] */
     private function returnTypeViolations(
-        ParametersAcceptorWithPhpDocs $function,
+        ParametersAcceptor $function,
         FunctionReflection $functionReflection
     ) : array {
         if (! FloatTypeHelper::isFloat($function->getReturnType())) {
             return [];
         }
 
-        return [sprintf(
+        return [RuleErrorBuilder::message(sprintf(
             'Function %s() cannot have %s as its return type - floats are not allowed.',
             $functionReflection->getName(),
             $function->getReturnType()->describe(VerbosityLevel::typeOnly())
-        ),
+        ))->build(),
         ];
     }
 
-    /** @return string[]|null[] */
+    /** @return RuleError[]|null[] */
     private function violationsForParameters(
-        ParametersAcceptorWithPhpDocs $function,
+        ParametersAcceptor $function,
         FunctionReflection $functionReflection
     ) : array {
         $parameters = $function->getParameters();
 
         return array_map(
-            static function (ParameterReflection $parameter, int $index) use ($functionReflection) : ?string {
+            static function (ParameterReflection $parameter, int $index) use ($functionReflection) : ?RuleError {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
                     return null;
                 }
 
-                return sprintf(
+                return RuleErrorBuilder::message(sprintf(
                     'Parameter #%d $%s of function %s() cannot have %s as its type - floats are not allowed.',
                     $index + 1,
                     $parameter->getName(),
                     $functionReflection->getName(),
                     $parameter->getType()->describe(VerbosityLevel::typeOnly())
-                );
+                ))->build();
             },
             array_values($parameters),
             array_keys($parameters)

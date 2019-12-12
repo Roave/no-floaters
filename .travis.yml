@@ -35,9 +35,3 @@ jobs:
 
     - stage: Code Style
       script: vendor/bin/phpcs
-
-    - stage: Dependencies Check
-      script: vendor/bin/composer-require-checker
-
-    - stage: Backwards Compatibility Check
-      script: vendor/bin/roave-backward-compatibility-check
