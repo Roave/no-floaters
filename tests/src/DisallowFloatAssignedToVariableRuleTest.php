@@ -9,6 +9,9 @@ use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatAssignedToVariableRule;
 
+/**
+ * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatAssignedToVariableRule>
+ */
 final class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule

@@ -8,7 +8,10 @@ use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule;
 
-final class DisallowFloatinFunctionSignatureRuleTest extends RuleTestCase
+/**
+ * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule>
+ */
+final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule
     {

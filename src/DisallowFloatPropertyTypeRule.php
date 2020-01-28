@@ -8,11 +8,14 @@ use PhpParser\Node;
 use PhpParser\Node\Stmt\PropertyProperty;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\VerbosityLevel;
-use function assert;
 use function sprintf;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\PropertyProperty>
+ */
 final class DisallowFloatPropertyTypeRule implements Rule
 {
     public function getNodeType() : string
@@ -21,12 +24,10 @@ final class DisallowFloatPropertyTypeRule implements Rule
     }
 
     /**
-     * @return string[]
+     * {@inheritDoc}
      */
     public function processNode(Node $node, Scope $scope) : array
     {
-        assert($node instanceof PropertyProperty);
-
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();
         }
@@ -34,18 +35,18 @@ final class DisallowFloatPropertyTypeRule implements Rule
         $classReflection = $scope->getClassReflection();
         $propertyName    = $node->name->toString();
         $property        = $classReflection->getNativeProperty($node->name->toString());
-        $propertyType    = $property->getType();
+        $propertyType    = $property->getReadableType();
         if (! FloatTypeHelper::isFloat($propertyType)) {
             return [];
         }
 
         return [
-            sprintf(
+            RuleErrorBuilder::message(sprintf(
                 'Property %s::$%s cannot have %s as its type - floats are not allowed.',
                 $property->getDeclaringClass()->getDisplayName(),
                 $propertyName,
                 $propertyType->describe(VerbosityLevel::typeOnly())
-            ),
+            ))->build(),
         ];
     }
 }

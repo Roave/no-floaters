@@ -8,6 +8,9 @@ use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule;
 
+/**
+ * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule>
+ */
 class DisallowFloatEverywhereRuleTest extends RuleTestCase
 {
     protected function getRule() : Rule

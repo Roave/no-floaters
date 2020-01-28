@@ -8,10 +8,13 @@ use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\VerbosityLevel;
-use function assert;
 use function sprintf;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Expr>
+ */
 class DisallowFloatEverywhereRule implements Rule
 {
     public function getNodeType() : string
@@ -20,7 +23,7 @@ class DisallowFloatEverywhereRule implements Rule
     }
 
     /**
-     * @return string[]
+     * {@inheritDoc}
      */
     public function processNode(Node $node, Scope $scope) : array
     {
@@ -30,18 +33,16 @@ class DisallowFloatEverywhereRule implements Rule
             return [];
         }
 
-        assert($node instanceof Expr);
-
         $nodeType = $scope->getType($node);
         if (! FloatTypeHelper::isFloat($nodeType)) {
             return [];
         }
 
         return [
-            sprintf(
+            RuleErrorBuilder::message(sprintf(
                 'Cannot have %s as a result type of this expression - floats are not allowed.',
                 $nodeType->describe(VerbosityLevel::typeOnly())
-            ),
+            ))->build(),
         ];
     }
 }

@@ -8,7 +8,7 @@ parameters:
 	paths:
 		- %currentWorkingDirectory%/src
 		- %currentWorkingDirectory%/tests/src
-	level: 7
+	level: 8
 
 services:
 	scopeIsInClass:

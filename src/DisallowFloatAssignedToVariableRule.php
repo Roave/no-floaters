@@ -8,9 +8,13 @@ use PhpParser\Node;
 use PhpParser\PrettyPrinter\Standard;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\VerbosityLevel;
 use function sprintf;
 
+/**
+ * @implements \PHPStan\Rules\Rule<\PhpParser\Node>
+ */
 final class DisallowFloatAssignedToVariableRule implements Rule
 {
     /** @var Standard */
@@ -27,7 +31,7 @@ final class DisallowFloatAssignedToVariableRule implements Rule
     }
 
     /**
-     * @return string[]
+     * {@inheritDoc}
      */
     public function processNode(Node $node, Scope $scope) : array
     {
@@ -41,11 +45,11 @@ final class DisallowFloatAssignedToVariableRule implements Rule
         }
 
         return [
-            sprintf(
+            RuleErrorBuilder::message(sprintf(
                 'Cannot assign %s to %s - floats are not allowed.',
                 $resultType->describe(VerbosityLevel::typeOnly()),
                 $this->printer->prettyPrintExpr($node->var)
-            ),
+            ))->build(),
         ];
     }
 }
