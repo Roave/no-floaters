@@ -2,7 +2,7 @@
 
 ![`roave/no-floaters`](logo/roave-no-floaters.png)
 
-[![Build Status](https://travis-ci.org/Roave/no-floaters.png?branch=master)](https://travis-ci.org/Roave/no-floaters)
+[![Build Status](https://badgen.net/github/checks/Roave/no-floaters/master)](https://github.com/Roave/no-floaters/actions)
 [![Latest Stable Version](https://poser.pugx.org/roave/no-floaters/v/stable.png)](https://packagist.org/packages/roave/no-floaters)
 
 This library is a [PHPStan](https://github.com/phpstan/phpstan) plugin
