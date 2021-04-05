@@ -138,7 +138,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ["7.2", "7.3", "7.4", "8.0"]
+        php-version: ["7.4", "8.0"]
         operating-system: ["ubuntu-latest"]
         composer-args: [ "" ]
         include:
