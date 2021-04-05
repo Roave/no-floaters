@@ -10,22 +10,22 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\VerbosityLevel;
+
 use function sprintf;
 
 /**
- * @implements \PHPStan\Rules\Rule<\PhpParser\Node>
+ * @implements Rule<Node>
  */
 final class DisallowFloatAssignedToVariableRule implements Rule
 {
-    /** @var Standard */
-    private $printer;
+    private Standard $printer;
 
     public function __construct(Standard $printer)
     {
         $this->printer = $printer;
     }
 
-    public function getNodeType() : string
+    public function getNodeType(): string
     {
         return Node::class;
     }
@@ -33,7 +33,7 @@ final class DisallowFloatAssignedToVariableRule implements Rule
     /**
      * {@inheritDoc}
      */
-    public function processNode(Node $node, Scope $scope) : array
+    public function processNode(Node $node, Scope $scope): array
     {
         if (! $node instanceof Node\Expr\AssignOp && ! $node instanceof Node\Expr\Assign) {
             return [];

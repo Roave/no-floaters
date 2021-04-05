@@ -11,7 +11,7 @@ use PHPStan\Type\Type;
 /** @internal class is only for internal tooling use: do not import it in your own projects */
 final class FloatTypeHelper
 {
-    public static function isFloat(Type $type) : bool
+    public static function isFloat(Type $type): bool
     {
         if ($type instanceof MixedType) {
             return false;

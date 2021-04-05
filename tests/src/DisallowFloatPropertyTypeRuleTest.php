@@ -12,16 +12,16 @@ use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatPropertyTypeRule;
 
 /**
- * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatPropertyTypeRule>
+ * @extends RuleTestCase<DisallowFloatPropertyTypeRule>
  */
 final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
 {
-    protected function getRule() : Rule
+    protected function getRule(): Rule
     {
         return new DisallowFloatPropertyTypeRule();
     }
 
-    public function testRule() : void
+    public function testRule(): void
     {
         $this->analyse([__DIR__ . '/../asset/property.php'], [
             [
@@ -38,7 +38,7 @@ final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
     /**
      * Verifies that the impossible scenario of a method signature is not declared in a class method
      */
-    public function testRuleWillNotWorkWhenNotInClassScope() : void
+    public function testRuleWillNotWorkWhenNotInClassScope(): void
     {
         $rule = new DisallowFloatPropertyTypeRule();
 

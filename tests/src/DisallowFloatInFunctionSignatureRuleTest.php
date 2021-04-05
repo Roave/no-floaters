@@ -9,16 +9,16 @@ use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule;
 
 /**
- * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule>
+ * @extends RuleTestCase<DisallowFloatInFunctionSignatureRule>
  */
 final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
 {
-    protected function getRule() : Rule
+    protected function getRule(): Rule
     {
         return new DisallowFloatInFunctionSignatureRule($this->createBroker());
     }
 
-    public function testRule() : void
+    public function testRule(): void
     {
         require_once __DIR__ . '/../asset/function.php';
         $this->analyse([__DIR__ . '/../asset/function.php'], [
@@ -37,7 +37,7 @@ final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
         ]);
     }
 
-    public function testRuleWithoutNamespace() : void
+    public function testRuleWithoutNamespace(): void
     {
         require_once __DIR__ . '/../asset/functionWithoutNamespace.php';
         $this->analyse([__DIR__ . '/../asset/functionWithoutNamespace.php'], [
@@ -56,7 +56,7 @@ final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
         ]);
     }
 
-    public function testRuleShowsAllFloatParametersAsViolations() : void
+    public function testRuleShowsAllFloatParametersAsViolations(): void
     {
         require_once __DIR__ . '/../asset/functionWithInterpolatedFloatAndNonFloatParameters.php';
         $this->analyse([__DIR__ . '/../asset/functionWithInterpolatedFloatAndNonFloatParameters.php'], [
@@ -75,7 +75,7 @@ final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
         ]);
     }
 
-    public function testNotAutoloadedFunction() : void
+    public function testNotAutoloadedFunction(): void
     {
         $this->analyse([__DIR__ . '/../asset/functionNotAutoloaded.php'], []);
     }
