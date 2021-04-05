@@ -97,7 +97,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
                     $parameter->getType()->describe(VerbosityLevel::typeOnly())
                 ))->build();
             },
-            array_values($parameters),
+            $parameters,
             array_keys($parameters)
         );
     }
