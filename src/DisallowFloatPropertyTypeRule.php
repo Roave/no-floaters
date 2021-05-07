@@ -11,14 +11,15 @@ use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\VerbosityLevel;
+
 use function sprintf;
 
 /**
- * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\PropertyProperty>
+ * @implements Rule<PropertyProperty>
  */
 final class DisallowFloatPropertyTypeRule implements Rule
 {
-    public function getNodeType() : string
+    public function getNodeType(): string
     {
         return PropertyProperty::class;
     }
@@ -26,7 +27,7 @@ final class DisallowFloatPropertyTypeRule implements Rule
     /**
      * {@inheritDoc}
      */
-    public function processNode(Node $node, Scope $scope) : array
+    public function processNode(Node $node, Scope $scope): array
     {
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();

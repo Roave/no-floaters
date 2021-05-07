@@ -16,27 +16,26 @@ use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\VerbosityLevel;
+
 use function array_filter;
 use function array_keys;
 use function array_map;
 use function array_merge;
-use function array_values;
 use function sprintf;
 
 /**
- * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\Function_>
+ * @implements Rule<Function_>
  */
 final class DisallowFloatInFunctionSignatureRule implements Rule
 {
-    /** @var Broker */
-    private $broker;
+    private Broker $broker;
 
     public function __construct(Broker $broker)
     {
         $this->broker = $broker;
     }
 
-    public function getNodeType() : string
+    public function getNodeType(): string
     {
         return Function_::class;
     }
@@ -44,7 +43,7 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
     /**
      * {@inheritDoc}
      */
-    public function processNode(Node $node, Scope $scope) : array
+    public function processNode(Node $node, Scope $scope): array
     {
         $functionName = new Name($node->name->toString());
         if (! $this->broker->hasFunction($functionName, $scope)) {
@@ -67,16 +66,17 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
     private function returnTypeViolations(
         ParametersAcceptor $function,
         FunctionReflection $functionReflection
-    ) : array {
+    ): array {
         if (! FloatTypeHelper::isFloat($function->getReturnType())) {
             return [];
         }
 
-        return [RuleErrorBuilder::message(sprintf(
-            'Function %s() cannot have %s as its return type - floats are not allowed.',
-            $functionReflection->getName(),
-            $function->getReturnType()->describe(VerbosityLevel::typeOnly())
-        ))->build(),
+        return [
+            RuleErrorBuilder::message(sprintf(
+                'Function %s() cannot have %s as its return type - floats are not allowed.',
+                $functionReflection->getName(),
+                $function->getReturnType()->describe(VerbosityLevel::typeOnly())
+            ))->build(),
         ];
     }
 
@@ -84,11 +84,11 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
     private function violationsForParameters(
         ParametersAcceptor $function,
         FunctionReflection $functionReflection
-    ) : array {
+    ): array {
         $parameters = $function->getParameters();
 
         return array_map(
-            static function (ParameterReflection $parameter, int $index) use ($functionReflection) : ?RuleError {
+            static function (ParameterReflection $parameter, int $index) use ($functionReflection): ?RuleError {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
                     return null;
                 }
@@ -101,7 +101,7 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
                     $parameter->getType()->describe(VerbosityLevel::typeOnly())
                 ))->build();
             },
-            array_values($parameters),
+            $parameters,
             array_keys($parameters)
         );
     }

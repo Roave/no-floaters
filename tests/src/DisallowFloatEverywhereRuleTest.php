@@ -9,16 +9,16 @@ use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule;
 
 /**
- * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatEverywhereRule>
+ * @extends RuleTestCase<DisallowFloatEverywhereRule>
  */
 class DisallowFloatEverywhereRuleTest extends RuleTestCase
 {
-    protected function getRule() : Rule
+    protected function getRule(): Rule
     {
         return new DisallowFloatEverywhereRule();
     }
 
-    public function testRule() : void
+    public function testRule(): void
     {
         $this->analyse([__DIR__ . '/../asset/expr.php'], [
             [

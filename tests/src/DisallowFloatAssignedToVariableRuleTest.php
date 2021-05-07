@@ -10,16 +10,16 @@ use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatAssignedToVariableRule;
 
 /**
- * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatAssignedToVariableRule>
+ * @extends RuleTestCase<DisallowFloatAssignedToVariableRule>
  */
 final class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
 {
-    protected function getRule() : Rule
+    protected function getRule(): Rule
     {
         return new DisallowFloatAssignedToVariableRule(new Standard());
     }
 
-    public function testRule() : void
+    public function testRule(): void
     {
         $this->analyse([__DIR__ . '/../asset/assign.php'], [
             [

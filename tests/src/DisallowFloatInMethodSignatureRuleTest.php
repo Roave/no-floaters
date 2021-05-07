@@ -12,16 +12,16 @@ use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule;
 
 /**
- * @extends \PHPStan\Testing\RuleTestCase<\Roave\PHPStan\Rules\Floats\DisallowFloatInMethodSignatureRule>
+ * @extends RuleTestCase<DisallowFloatInMethodSignatureRule>
  */
 final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
 {
-    protected function getRule() : Rule
+    protected function getRule(): Rule
     {
         return new DisallowFloatInMethodSignatureRule();
     }
 
-    public function testRule() : void
+    public function testRule(): void
     {
         $this->analyse([__DIR__ . '/../asset/method.php'], [
             [
@@ -39,7 +39,7 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
         ]);
     }
 
-    public function testRuleShowsAllFloatParametersAsViolations() : void
+    public function testRuleShowsAllFloatParametersAsViolations(): void
     {
         $this->analyse([__DIR__ . '/../asset/methodWithInterpolatedFloatAndNotFloatParameters.php'], [
             [
@@ -60,7 +60,7 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
     /**
      * Verifies that the impossible scenario of a method signature is not declared in a class method
      */
-    public function testRuleWillNotWorkWhenNotInClassScope() : void
+    public function testRuleWillNotWorkWhenNotInClassScope(): void
     {
         $rule = new DisallowFloatInMethodSignatureRule();
 

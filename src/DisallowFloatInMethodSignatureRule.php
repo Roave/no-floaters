@@ -15,19 +15,19 @@ use PHPStan\Rules\RuleError;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\VerbosityLevel;
+
 use function array_filter;
 use function array_keys;
 use function array_map;
 use function array_merge;
-use function array_values;
 use function sprintf;
 
 /**
- * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\ClassMethod>
+ * @implements Rule<ClassMethod>
  */
 final class DisallowFloatInMethodSignatureRule implements Rule
 {
-    public function getNodeType() : string
+    public function getNodeType(): string
     {
         return ClassMethod::class;
     }
@@ -35,7 +35,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
     /**
      * {@inheritDoc}
      */
-    public function processNode(Node $node, Scope $scope) : array
+    public function processNode(Node $node, Scope $scope): array
     {
         if (! $scope->isInClass()) {
             throw new ShouldNotHappenException();
@@ -59,17 +59,18 @@ final class DisallowFloatInMethodSignatureRule implements Rule
     private function returnTypeViolations(
         ParametersAcceptor $method,
         MethodReflection $methodReflection
-    ) : array {
+    ): array {
         if (! FloatTypeHelper::isFloat($method->getReturnType())) {
             return [];
         }
 
-        return [RuleErrorBuilder::message(sprintf(
-            'Method %s::%s() cannot have %s as its return type - floats are not allowed.',
-            $methodReflection->getDeclaringClass()->getDisplayName(),
-            $methodReflection->getName(),
-            $method->getReturnType()->describe(VerbosityLevel::typeOnly())
-        ))->build(),
+        return [
+            RuleErrorBuilder::message(sprintf(
+                'Method %s::%s() cannot have %s as its return type - floats are not allowed.',
+                $methodReflection->getDeclaringClass()->getDisplayName(),
+                $methodReflection->getName(),
+                $method->getReturnType()->describe(VerbosityLevel::typeOnly())
+            ))->build(),
         ];
     }
 
@@ -77,11 +78,11 @@ final class DisallowFloatInMethodSignatureRule implements Rule
     private function violationsForParameters(
         ParametersAcceptor $function,
         MethodReflection $methodReflection
-    ) : array {
+    ): array {
         $parameters = $function->getParameters();
 
         return array_map(
-            static function (ParameterReflection $parameter, int $index) use ($methodReflection) : ?RuleError {
+            static function (ParameterReflection $parameter, int $index) use ($methodReflection): ?RuleError {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
                     return null;
                 }
@@ -95,7 +96,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
                     $parameter->getType()->describe(VerbosityLevel::typeOnly())
                 ))->build();
             },
-            array_values($parameters),
+            $parameters,
             array_keys($parameters)
         );
     }

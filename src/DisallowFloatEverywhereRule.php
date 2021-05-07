@@ -10,14 +10,15 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\VerbosityLevel;
+
 use function sprintf;
 
 /**
- * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Expr>
+ * @implements Rule<Expr>
  */
 class DisallowFloatEverywhereRule implements Rule
 {
-    public function getNodeType() : string
+    public function getNodeType(): string
     {
         return Expr::class;
     }
@@ -25,9 +26,10 @@ class DisallowFloatEverywhereRule implements Rule
     /**
      * {@inheritDoc}
      */
-    public function processNode(Node $node, Scope $scope) : array
+    public function processNode(Node $node, Scope $scope): array
     {
-        if ($node instanceof Node\Expr\AssignOp
+        if (
+            $node instanceof Node\Expr\AssignOp
             || $node instanceof Node\Expr\Assign
         ) {
             return [];
