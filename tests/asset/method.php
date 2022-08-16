@@ -26,4 +26,11 @@ class Foo
 
     }
 
+    /**
+     * @return never
+     */
+    public function withNever()
+    {
+        throw new \RuntimeException();
+    }
 }

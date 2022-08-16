@@ -6,6 +6,7 @@ namespace Roave\PHPStan\Rules\Floats;
 
 use PHPStan\Type\FloatType;
 use PHPStan\Type\MixedType;
+use PHPStan\Type\NeverType;
 use PHPStan\Type\Type;
 
 /** @internal class is only for internal tooling use: do not import it in your own projects */
@@ -14,6 +15,10 @@ final class FloatTypeHelper
     public static function isFloat(Type $type): bool
     {
         if ($type instanceof MixedType) {
+            return false;
+        }
+
+        if ($type instanceof NeverType) {
             return false;
         }
 
