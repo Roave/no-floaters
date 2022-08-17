@@ -22,3 +22,11 @@ function doBar(): string
 {
 
 }
+
+/**
+ * @return never
+ */
+function withNever()
+{
+    throw new \RuntimeException();
+}
