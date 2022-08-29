@@ -77,6 +77,14 @@ final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
 
     public function testNotAutoloadedFunction(): void
     {
-        $this->analyse([__DIR__ . '/../asset/functionNotAutoloaded.php'], []);
+        $this->analyse(
+            [__DIR__ . '/../asset/functionNotAutoloaded.php'],
+            [
+                [
+                    'Function nonexistentRoaveFunction() cannot have float as its return type - floats are not allowed.',
+                    3,
+                ],
+            ]
+        );
     }
 }
