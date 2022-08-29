@@ -8,9 +8,7 @@ use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatInFunctionSignatureRule;
 
-/**
- * @extends RuleTestCase<DisallowFloatInFunctionSignatureRule>
- */
+/** @extends RuleTestCase<DisallowFloatInFunctionSignatureRule> */
 final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
 {
     protected function getRule(): Rule
@@ -84,7 +82,7 @@ final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
                     'Function nonexistentRoaveFunction() cannot have float as its return type - floats are not allowed.',
                     3,
                 ],
-            ]
+            ],
         );
     }
 }

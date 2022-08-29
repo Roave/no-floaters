@@ -11,9 +11,7 @@ use PHPStan\ShouldNotHappenException;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatPropertyTypeRule;
 
-/**
- * @extends RuleTestCase<DisallowFloatPropertyTypeRule>
- */
+/** @extends RuleTestCase<DisallowFloatPropertyTypeRule> */
 final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
 {
     protected function getRule(): Rule

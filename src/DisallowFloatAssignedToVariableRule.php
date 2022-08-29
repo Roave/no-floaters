@@ -13,16 +13,11 @@ use PHPStan\Type\VerbosityLevel;
 
 use function sprintf;
 
-/**
- * @implements Rule<Node>
- */
+/** @implements Rule<Node> */
 final class DisallowFloatAssignedToVariableRule implements Rule
 {
-    private Standard $printer;
-
-    public function __construct(Standard $printer)
+    public function __construct(private Standard $printer)
     {
-        $this->printer = $printer;
     }
 
     public function getNodeType(): string
@@ -48,7 +43,7 @@ final class DisallowFloatAssignedToVariableRule implements Rule
             RuleErrorBuilder::message(sprintf(
                 'Cannot assign %s to %s - floats are not allowed.',
                 $resultType->describe(VerbosityLevel::typeOnly()),
-                $this->printer->prettyPrintExpr($node->var)
+                $this->printer->prettyPrintExpr($node->var),
             ))->build(),
         ];
     }
