@@ -22,9 +22,7 @@ use function array_map;
 use function array_merge;
 use function sprintf;
 
-/**
- * @implements Rule<ClassMethod>
- */
+/** @implements Rule<ClassMethod> */
 final class DisallowFloatInMethodSignatureRule implements Rule
 {
     public function getNodeType(): string
@@ -58,7 +56,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
     /** @return RuleError[] */
     private function returnTypeViolations(
         ParametersAcceptor $method,
-        MethodReflection $methodReflection
+        MethodReflection $methodReflection,
     ): array {
         if (! FloatTypeHelper::isFloat($method->getReturnType())) {
             return [];
@@ -69,7 +67,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
                 'Method %s::%s() cannot have %s as its return type - floats are not allowed.',
                 $methodReflection->getDeclaringClass()->getDisplayName(),
                 $methodReflection->getName(),
-                $method->getReturnType()->describe(VerbosityLevel::typeOnly())
+                $method->getReturnType()->describe(VerbosityLevel::typeOnly()),
             ))->build(),
         ];
     }
@@ -77,12 +75,12 @@ final class DisallowFloatInMethodSignatureRule implements Rule
     /** @return RuleError[]|null[] */
     private function violationsForParameters(
         ParametersAcceptor $function,
-        MethodReflection $methodReflection
+        MethodReflection $methodReflection,
     ): array {
         $parameters = $function->getParameters();
 
         return array_map(
-            static function (ParameterReflection $parameter, int $index) use ($methodReflection): ?RuleError {
+            static function (ParameterReflection $parameter, int $index) use ($methodReflection): RuleError|null {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
                     return null;
                 }
@@ -93,11 +91,11 @@ final class DisallowFloatInMethodSignatureRule implements Rule
                     $parameter->getName(),
                     $methodReflection->getDeclaringClass()->getDisplayName(),
                     $methodReflection->getName(),
-                    $parameter->getType()->describe(VerbosityLevel::typeOnly())
+                    $parameter->getType()->describe(VerbosityLevel::typeOnly()),
                 ))->build();
             },
             $parameters,
-            array_keys($parameters)
+            array_keys($parameters),
         );
     }
 }

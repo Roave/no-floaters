@@ -14,9 +14,7 @@ use PHPStan\Type\VerbosityLevel;
 
 use function sprintf;
 
-/**
- * @implements Rule<PropertyProperty>
- */
+/** @implements Rule<PropertyProperty> */
 final class DisallowFloatPropertyTypeRule implements Rule
 {
     public function getNodeType(): string
@@ -46,7 +44,7 @@ final class DisallowFloatPropertyTypeRule implements Rule
                 'Property %s::$%s cannot have %s as its type - floats are not allowed.',
                 $property->getDeclaringClass()->getDisplayName(),
                 $propertyName,
-                $propertyType->describe(VerbosityLevel::typeOnly())
+                $propertyType->describe(VerbosityLevel::typeOnly()),
             ))->build(),
         ];
     }

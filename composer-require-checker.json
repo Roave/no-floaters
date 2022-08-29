@@ -1,10 +1,37 @@
 {
-    "symbol-whitelist" : [
-        "null", "true", "false",
-        "static", "self", "parent",
-        "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object"
+    "symbol-whitelist": [
+        "null",
+        "true",
+        "false",
+        "static",
+        "self",
+        "parent",
+        "array",
+        "string",
+        "int",
+        "float",
+        "bool",
+        "iterable",
+        "callable",
+        "void",
+        "object",
+        "PHPStan\\Analyser\\Scope",
+        "PHPStan\\Broker\\Broker",
+        "PHPStan\\Analyser\\Scope",
+        "PHPStan\\Broker\\Broker",
+        "PHPStan\\Reflection\\FunctionReflection",
+        "PHPStan\\Reflection\\MethodReflection",
+        "PHPStan\\Reflection\\ParametersAcceptor",
+        "PHPStan\\Rules\\Rule",
+        "PHPStan\\Rules\\RuleErrorBuilder",
+        "PHPStan\\ShouldNotHappenException",
+        "PHPStan\\Type\\FloatType",
+        "PHPStan\\Type\\MixedType",
+        "PHPStan\\Type\\NeverType",
+        "PHPStan\\Type\\Type",
+        "PHPStan\\Type\\VerbosityLevel"
     ],
-    "php-core-extensions" : [
+    "php-core-extensions": [
         "Core",
         "date",
         "pcre",

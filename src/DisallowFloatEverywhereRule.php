@@ -13,9 +13,7 @@ use PHPStan\Type\VerbosityLevel;
 
 use function sprintf;
 
-/**
- * @implements Rule<Expr>
- */
+/** @implements Rule<Expr> */
 class DisallowFloatEverywhereRule implements Rule
 {
     public function getNodeType(): string
@@ -43,7 +41,7 @@ class DisallowFloatEverywhereRule implements Rule
         return [
             RuleErrorBuilder::message(sprintf(
                 'Cannot have %s as a result type of this expression - floats are not allowed.',
-                $nodeType->describe(VerbosityLevel::typeOnly())
+                $nodeType->describe(VerbosityLevel::typeOnly()),
             ))->build(),
         ];
     }
