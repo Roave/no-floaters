@@ -31,6 +31,10 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "infection/extension-installer": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
         "sort-packages": true
     },
     "minimum-stability": "dev",
