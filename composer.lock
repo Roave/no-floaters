@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00b8e021e007ebdf8571a4a6b6a6d488",
+    "content-hash": "6cdfe23fb5a887537162a0977a477095",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -834,16 +834,16 @@
         },
         {
             "name": "maglnet/composer-require-checker",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maglnet/ComposerRequireChecker.git",
-                "reference": "4d18781ae098802cb784f42454ef2477d6a95a4f"
+                "reference": "fb2a69aa2b7307541233536f179275e99451b339"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/4d18781ae098802cb784f42454ef2477d6a95a4f",
-                "reference": "4d18781ae098802cb784f42454ef2477d6a95a4f",
+                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/fb2a69aa2b7307541233536f179275e99451b339",
+                "reference": "fb2a69aa2b7307541233536f179275e99451b339",
                 "shasum": ""
             },
             "require": {
@@ -908,9 +908,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maglnet/ComposerRequireChecker/issues",
-                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/4.1.0"
+                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/4.2.0"
             },
-            "time": "2022-07-06T17:01:47+00:00"
+            "time": "2022-08-30T09:36:29+00:00"
         },
         {
             "name": "myclabs/deep-copy",
