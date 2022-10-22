@@ -5,13 +5,13 @@
         "MIT"
     ],
     "require": {
-        "php": "~8.1.0",
+        "php": "~8.1.0 || ~8.2.0",
         "nikic/php-parser": "^4.15.1",
         "phpstan/phpstan": "^1.8.10"
     },
     "require-dev": {
         "doctrine/coding-standard": "^10.0.0",
-        "infection/infection": "^0.26.15",
+        "infection/infection": "^0.26.1",
         "maglnet/composer-require-checker": "^4.2.0",
         "phpstan/phpstan-phpunit": "^1.1.1",
         "phpstan/phpstan-strict-rules": "^1.4.4",
