@@ -10,7 +10,7 @@
         "phpstan/phpstan": "^1.9.3"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^10.0.0",
+        "doctrine/coding-standard": "^11.0.0",
         "infection/infection": "^0.26.16",
         "maglnet/composer-require-checker": "^4.3.0",
         "phpstan/phpstan-phpunit": "^1.3.2",
