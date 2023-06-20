@@ -7,7 +7,7 @@
     "require": {
         "php": "~8.1.0 || ~8.2.0",
         "nikic/php-parser": "^4.15.5",
-        "phpstan/phpstan": "^1.10.19"
+        "phpstan/phpstan": "^1.10.20"
     },
     "require-dev": {
         "doctrine/coding-standard": "^11.1.0",
