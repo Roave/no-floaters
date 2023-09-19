@@ -8,10 +8,10 @@
 This library is a [PHPStan](https://github.com/phpstan/phpstan) plugin
 that disallows:
 
- * declaration of `float` properties
- * `float` method parameters
- * `float` method return types
- * assignment of `float` values to variables or properties
+* declaration of `float` properties
+* `float` method parameters
+* `float` method return types
+* assignment of `float` values to variables or properties
 
 The reason for this restriction is that rounding errors coming
 from floating point arithmetic operations are not acceptable in
@@ -46,7 +46,7 @@ In your `phpstan.neon` configuration, add following section:
 
 ```neon
 includes:
-	- vendor/roave/no-floaters/rules.neon
+    - vendor/roave/no-floaters/rules.neon
 ```
 
 Optionally, you can configure the library to disallow any
@@ -55,7 +55,7 @@ Optionally, you can configure the library to disallow any
 
 ```neon
 parameters:
-	disallowFloatsEverywhere: true
+    disallowFloatsEverywhere: true
 ```
 
 If the above is enabled, given the following `example-file.php`
@@ -69,7 +69,7 @@ $a = 1 / 3;
 
 You should get something like following:
 
-```
+```cli
 vendor/bin/phpstan analyse example-file.php -l 7
  1/1 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
 
@@ -83,12 +83,12 @@ vendor/bin/phpstan analyse example-file.php -l 7
  [ERROR] Found 1 error
 
 ```
+
 ## roave/no-floaters for enterprise
 
 Available as part of the Tidelift Subscription.
 
 The maintainers of roave/no-floaters and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/packagist-roave-no-floaters?utm_source=packagist-roave-no-floaters&utm_medium=referral&utm_campaign=enterprise&utm_term=repo).
 
-
 If you need help with setting up this library in your project,
-you can contact us at team@roave.com for consulting/support.
+you can contact us at <team@roave.com> for consulting/support.
