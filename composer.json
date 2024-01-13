@@ -1,5 +1,6 @@
 {
     "name": "roave/no-floaters",
+    "type": "phpstan-extension",
     "description": "PHPStan Rules to Disallow Float proliferation in contexts where IEEE-754 rounding errors are not acceptable",
     "license": [
         "MIT"
