@@ -10,11 +10,3 @@ parameters:
 		- %currentWorkingDirectory%/tests/src
 	level: 8
 
-services:
-	scopeIsInClass:
-		class: PHPStan\Internal\ScopeIsInClassTypeSpecifyingExtension
-		arguments:
-			isInMethodName: isInClass
-			removeNullMethodName: getClassReflection
-		tags:
-			- phpstan.typeSpecifier.methodTypeSpecifyingExtension
