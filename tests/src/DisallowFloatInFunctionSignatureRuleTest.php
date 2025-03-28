@@ -13,7 +13,7 @@ final class DisallowFloatInFunctionSignatureRuleTest extends RuleTestCase
 {
     protected function getRule(): Rule
     {
-        return new DisallowFloatInFunctionSignatureRule($this->createBroker());
+        return new DisallowFloatInFunctionSignatureRule($this->createReflectionProvider());
     }
 
     public function testRule(): void

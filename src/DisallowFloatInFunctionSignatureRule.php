@@ -8,10 +8,10 @@ use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Function_;
 use PHPStan\Analyser\Scope;
-use PHPStan\Broker\Broker;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\ParametersAcceptor;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
 use PHPStan\Rules\RuleErrorBuilder;
@@ -26,7 +26,7 @@ use function sprintf;
 /** @implements Rule<Function_> */
 final class DisallowFloatInFunctionSignatureRule implements Rule
 {
-    public function __construct(private Broker $broker)
+    public function __construct(private ReflectionProvider $reflectionProvider)
     {
     }
 
@@ -41,11 +41,11 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         $functionName = new Name($node->name->toString());
-        if (! $this->broker->hasFunction($functionName, $scope)) {
+        if (! $this->reflectionProvider->hasFunction($functionName, $scope)) {
             return [];
         }
 
-        $functionReflection = $this->broker->getFunction($functionName, $scope);
+        $functionReflection = $this->reflectionProvider->getFunction($functionName, $scope);
 
         $errors = [];
 
