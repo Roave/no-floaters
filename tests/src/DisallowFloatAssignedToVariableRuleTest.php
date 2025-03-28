@@ -14,6 +14,7 @@ final class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
 {
     protected function getRule(): Rule
     {
+        /** @phpstan-ignore phpstanApi.constructor */
         return new DisallowFloatAssignedToVariableRule(new Printer());
     }
 
