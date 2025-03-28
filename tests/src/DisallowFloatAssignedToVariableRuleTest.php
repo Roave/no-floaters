@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Roave\PHPStanTest\Rules\Floats;
 
-use PhpParser\PrettyPrinter\Standard;
+use PHPStan\Node\Printer\Printer;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Roave\PHPStan\Rules\Floats\DisallowFloatAssignedToVariableRule;
@@ -14,7 +14,7 @@ final class DisallowFloatAssignedToVariableRuleTest extends RuleTestCase
 {
     protected function getRule(): Rule
     {
-        return new DisallowFloatAssignedToVariableRule(new Standard());
+        return new DisallowFloatAssignedToVariableRule(new Printer());
     }
 
     public function testRule(): void
