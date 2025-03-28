@@ -16,7 +16,6 @@
         "void",
         "object",
         "PHPStan\\Analyser\\Scope",
-        "PHPStan\\Analyser\\Scope",
         "PHPStan\\Node\\Printer\\Printer",
         "PHPStan\\Reflection\\FunctionReflection",
         "PHPStan\\Reflection\\MethodReflection",
