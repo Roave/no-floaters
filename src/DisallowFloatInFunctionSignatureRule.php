@@ -71,7 +71,7 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
                 'Function %s() cannot have %s as its return type - floats are not allowed.',
                 $functionReflection->getName(),
                 $function->getReturnType()->describe(VerbosityLevel::typeOnly()),
-            ))->build(),
+            ))->identifier('float.function')->build(),
         ];
     }
 
@@ -94,7 +94,7 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
                     $parameter->getName(),
                     $functionReflection->getName(),
                     $parameter->getType()->describe(VerbosityLevel::typeOnly()),
-                ))->build();
+                ))->identifier('float.function')->build();
             },
             $parameters,
             array_keys($parameters),

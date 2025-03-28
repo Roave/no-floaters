@@ -46,7 +46,7 @@ final class DisallowFloatPropertyTypeRule implements Rule
                 $property->getDeclaringClass()->getDisplayName(),
                 $propertyName,
                 $propertyType->describe(VerbosityLevel::typeOnly()),
-            ))->build(),
+            ))->identifier('float.property')->build(),
         ];
     }
 }

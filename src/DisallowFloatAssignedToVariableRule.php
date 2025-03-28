@@ -44,7 +44,7 @@ final class DisallowFloatAssignedToVariableRule implements Rule
                 'Cannot assign %s to %s - floats are not allowed.',
                 $resultType->describe(VerbosityLevel::typeOnly()),
                 $this->printer->prettyPrintExpr($node->var),
-            ))->build(),
+            ))->identifier('float.assign')->build(),
         ];
     }
 }

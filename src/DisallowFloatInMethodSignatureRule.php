@@ -68,7 +68,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
                 $methodReflection->getDeclaringClass()->getDisplayName(),
                 $methodReflection->getName(),
                 $method->getReturnType()->describe(VerbosityLevel::typeOnly()),
-            ))->build(),
+            ))->identifier('float.type')->build(),
         ];
     }
 
@@ -92,7 +92,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
                     $methodReflection->getDeclaringClass()->getDisplayName(),
                     $methodReflection->getName(),
                     $parameter->getType()->describe(VerbosityLevel::typeOnly()),
-                ))->build();
+                ))->identifier('float.type')->build();
             },
             $parameters,
             array_keys($parameters),

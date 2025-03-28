@@ -42,7 +42,7 @@ class DisallowFloatEverywhereRule implements Rule
             RuleErrorBuilder::message(sprintf(
                 'Cannot have %s as a result type of this expression - floats are not allowed.',
                 $nodeType->describe(VerbosityLevel::typeOnly()),
-            ))->build(),
+            ))->identifier('float.expression')->build(),
         ];
     }
 }
