@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Roave\PHPStan\Rules\Floats;
 
 use PhpParser\Node;
+use PhpParser\Node\PropertyItem;
 use PhpParser\Node\Stmt\PropertyProperty;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
@@ -19,7 +20,7 @@ final class DisallowFloatPropertyTypeRule implements Rule
 {
     public function getNodeType(): string
     {
-        return PropertyProperty::class;
+        return PropertyItem::class;
     }
 
     /**
