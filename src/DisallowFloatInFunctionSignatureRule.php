@@ -12,6 +12,7 @@ use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\ParametersAcceptor;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStan\Rules\IdentifierRuleError;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
 use PHPStan\Rules\RuleErrorBuilder;
@@ -21,6 +22,7 @@ use function array_filter;
 use function array_keys;
 use function array_map;
 use function array_merge;
+use function array_values;
 use function sprintf;
 
 /** @implements Rule<Function_> */
@@ -54,10 +56,10 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
             $errors[] = $this->returnTypeViolations($functionVariant, $functionReflection);
         }
 
-        return array_filter(array_merge([], ...$errors));
+        return array_merge([], ...$errors);
     }
 
-    /** @return RuleError[] */
+    /** @return list<IdentifierRuleError> */
     private function returnTypeViolations(
         ParametersAcceptor $function,
         FunctionReflection $functionReflection,
@@ -75,14 +77,14 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
         ];
     }
 
-    /** @return RuleError[]|null[] */
+    /** @return list<IdentifierRuleError> */
     private function violationsForParameters(
         ParametersAcceptor $function,
         FunctionReflection $functionReflection,
     ): array {
         $parameters = $function->getParameters();
 
-        return array_map(
+        return array_values(array_filter(array_map(
             static function (ParameterReflection $parameter, int $index) use ($functionReflection): RuleError|null {
                 if (! FloatTypeHelper::isFloat($parameter->getType())) {
                     return null;
@@ -98,6 +100,6 @@ final class DisallowFloatInFunctionSignatureRule implements Rule
             },
             $parameters,
             array_keys($parameters),
-        );
+        ), static fn (RuleError|null $error): bool => $error !== null));
     }
 }
