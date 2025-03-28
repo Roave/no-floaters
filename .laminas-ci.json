@@ -1,2 +1,5 @@
 {
+  "extensions": [
+    "pcov"
+  ]
 }
