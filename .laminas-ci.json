@@ -11,7 +11,7 @@
       "job": {
         "php": "@lowest",
         "dependencies": "locked",
-        "command": "./vendor/bin/infection"
+        "command": "./vendor/bin/roave-infection-static-analysis-plugin"
       }
     }
   ]
