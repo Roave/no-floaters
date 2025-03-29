@@ -41,7 +41,5 @@
             "php": "8.2.99"
         },
         "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
