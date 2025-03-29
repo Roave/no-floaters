@@ -13,7 +13,10 @@ use PHPStan\Type\VerbosityLevel;
 
 use function sprintf;
 
-/** @implements Rule<Expr> */
+/**
+ * @implements Rule<Expr>
+ * @final not designed for inheritance, but kept open for BC, until the next major release
+ */
 class DisallowFloatEverywhereRule implements Rule
 {
     public function getNodeType(): string

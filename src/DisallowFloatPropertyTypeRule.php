@@ -6,8 +6,8 @@ namespace Roave\PHPStan\Rules\Floats;
 
 use PhpParser\Node;
 use PhpParser\Node\PropertyItem;
-use PhpParser\Node\Stmt\PropertyProperty;
 use PHPStan\Analyser\Scope;
+use PHPStan\Reflection\ClassReflection;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\ShouldNotHappenException;
@@ -15,7 +15,7 @@ use PHPStan\Type\VerbosityLevel;
 
 use function sprintf;
 
-/** @implements Rule<PropertyProperty> */
+/** @implements Rule<PropertyItem> */
 final class DisallowFloatPropertyTypeRule implements Rule
 {
     public function getNodeType(): string
@@ -32,6 +32,7 @@ final class DisallowFloatPropertyTypeRule implements Rule
             throw new ShouldNotHappenException();
         }
 
+        /** @psalm-var ClassReflection $classReflection */
         $classReflection = $scope->getClassReflection();
         $propertyName    = $node->name->toString();
         $property        = $classReflection->getNativeProperty($node->name->toString());

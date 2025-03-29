@@ -7,6 +7,7 @@ namespace Roave\PHPStan\Rules\Floats;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\Scope;
+use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\ParametersAcceptor;
@@ -41,6 +42,7 @@ final class DisallowFloatInMethodSignatureRule implements Rule
             throw new ShouldNotHappenException();
         }
 
+        /** @psalm-var ClassReflection $classReflection */
         $classReflection = $scope->getClassReflection();
         $methodName      = $node->name->toString();
         $method          = $classReflection->getNativeMethod($methodName);
