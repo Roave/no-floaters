@@ -8,10 +8,10 @@
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
         "nikic/php-parser": "^5.4",
-        "phpstan/phpstan": "^2.1.14"
+        "phpstan/phpstan": "^2.1.15"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^13.0.0",
+        "doctrine/coding-standard": "^13.0.1",
         "maglnet/composer-require-checker": "^4.16.1",
         "phpstan/phpstan-phpunit": "^2.0.6",
         "phpstan/phpstan-strict-rules": "^2.0.4",
