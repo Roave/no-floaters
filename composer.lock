@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d49033ddd0519f15da0a34b6b968e8a",
+    "content-hash": "1e2cf75574012be5373640a9c5a33c92",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -5164,16 +5164,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.13.3",
+            "version": "3.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "5be16e10d07a2b0c629a8fc52c653fd57458bdf8"
+                "reference": "ad545ea9c1b7d270ce0fc9cbfb884161cd706119"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/5be16e10d07a2b0c629a8fc52c653fd57458bdf8",
-                "reference": "5be16e10d07a2b0c629a8fc52c653fd57458bdf8",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ad545ea9c1b7d270ce0fc9cbfb884161cd706119",
+                "reference": "ad545ea9c1b7d270ce0fc9cbfb884161cd706119",
                 "shasum": ""
             },
             "require": {
@@ -5244,7 +5244,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-09-04T19:19:52+00:00"
+            "time": "2025-09-05T05:47:09+00:00"
         },
         {
             "name": "symfony/console",
