@@ -39,8 +39,8 @@ final class DisallowFloatPropertyTypeRuleTest extends RuleTestCase
     {
         $rule = new DisallowFloatPropertyTypeRule();
 
-        $node  = $this->createMock(PropertyItem::class);
-        $scope = $this->createMock(ScopeWithNodeCallbackInvoker::class);
+        $node  = self::createStub(PropertyItem::class);
+        $scope = self::createStub(ScopeWithNodeCallbackInvoker::class);
 
         $scope
             ->method('isInClass')
