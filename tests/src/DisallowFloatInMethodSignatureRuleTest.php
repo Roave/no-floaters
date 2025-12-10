@@ -61,8 +61,8 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
     {
         $rule = new DisallowFloatInMethodSignatureRule();
 
-        $node  = $this->createMock(ClassMethod::class);
-        $scope = $this->createMock(ScopeWithNodeCallbackInvoker::class);
+        $node  = self::createStub(ClassMethod::class);
+        $scope = self::createStub(ScopeWithNodeCallbackInvoker::class);
 
         $scope
             ->method('isInClass')
