@@ -19,7 +19,7 @@
         "psalm/plugin-phpunit": "^0.19.5",
         "roave/infection-static-analysis-plugin": "^1.42.0",
         "squizlabs/php_codesniffer": "^4.0.1",
-        "vimeo/psalm": "^6.14.2"
+        "vimeo/psalm": "^6.14.3"
     },
     "autoload": {
         "psr-4": {
