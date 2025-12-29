@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfd69f4907400584f47f7802f73c71ed",
+    "content-hash": "c1fabd6d99a7bf9962e7628fa3a6d229",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -1942,16 +1942,16 @@
         },
         {
             "name": "infection/infection",
-            "version": "0.31.9",
+            "version": "0.32.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/infection/infection.git",
-                "reference": "f9628fcd7f76eadf24726e57a81937c42458232b"
+                "url": "https://github.com/infection/infection",
+                "reference": "71d4a12cbe62d79c06dce628b8a5fe234636424c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infection/infection/zipball/f9628fcd7f76eadf24726e57a81937c42458232b",
-                "reference": "f9628fcd7f76eadf24726e57a81937c42458232b",
+                "url": "https://api.github.com/repos/infection/infection/zipball/71d4a12cbe62d79c06dce628b8a5fe234636424c",
+                "reference": "71d4a12cbe62d79c06dce628b8a5fe234636424c",
                 "shasum": ""
             },
             "require": {
@@ -1968,20 +1968,22 @@
                 "infection/include-interceptor": "^0.2.5",
                 "infection/mutator": "^0.4",
                 "justinrainbow/json-schema": "^6.0",
-                "nikic/php-parser": "^5.3",
+                "nikic/php-parser": "^5.6.2",
                 "ondram/ci-detector": "^4.1.0",
                 "php": "^8.2",
+                "psr/log": "^2.0 || ^3.0",
                 "sanmai/di-container": "^0.1.4",
                 "sanmai/duoclock": "^0.1.0",
                 "sanmai/later": "^0.1.7",
                 "sanmai/pipeline": "^7.0",
                 "sebastian/diff": "^4.0 || ^5.0 || ^6.0 || ^7.0",
-                "symfony/console": "^6.4 || ^7.0",
-                "symfony/filesystem": "^6.4 || ^7.0",
-                "symfony/finder": "^6.4 || ^7.0",
-                "symfony/process": "^6.4 || ^7.0",
+                "symfony/console": "^6.4 || ^7.0 || ^8.0",
+                "symfony/filesystem": "^6.4 || ^7.0 || ^8.0",
+                "symfony/finder": "^6.4 || ^7.0 || ^8.0",
+                "symfony/polyfill-php85": "^1.33",
+                "symfony/process": "^6.4 || ^7.0 || ^8.0",
                 "thecodingmachine/safe": "^v3.0",
-                "webmozart/assert": "^1.11"
+                "webmozart/assert": "^1.11 || ^2.0"
             },
             "conflict": {
                 "antecedent/patchwork": "<2.1.25",
@@ -1990,18 +1992,21 @@
             "require-dev": {
                 "ext-simplexml": "*",
                 "fidry/makefile": "^1.0",
+                "fig/log-test": "^1.2",
+                "phpbench/phpbench": "^1.4",
                 "phpstan/extension-installer": "^1.4",
                 "phpstan/phpstan": "^2.1",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-strict-rules": "^2.0",
                 "phpstan/phpstan-webmozart-assert": "^2.0",
                 "phpunit/phpunit": "^11.5.27",
-                "rector/rector": "^2.0",
-                "shipmonk/dead-code-detector": "^0.12.0",
+                "rector/rector": "^2.2.4",
+                "shipmonk/dead-code-detector": "^0.14.0",
                 "shipmonk/name-collision-detector": "^2.1",
                 "sidz/phpstan-rules": "^0.5.1",
-                "symfony/yaml": "^6.4 || ^7.0",
-                "thecodingmachine/phpstan-safe-rule": "^1.4"
+                "symfony/yaml": "^6.4 || ^7.0 || ^8.0",
+                "thecodingmachine/phpstan-safe-rule": "^1.4",
+                "webmozarts/strict-phpunit": "^7.15"
             },
             "bin": [
                 "bin/infection"
@@ -2056,20 +2061,9 @@
                 "unit testing"
             ],
             "support": {
-                "issues": "https://github.com/infection/infection/issues",
-                "source": "https://github.com/infection/infection/tree/0.31.9"
+                "issues": "https://github.com/infection/infection/issues"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/infection",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/infection",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2025-10-27T12:00:54+00:00"
+            "time": "2025-12-24T13:55:03+00:00"
         },
         {
             "name": "infection/mutator",
@@ -2441,25 +2435,25 @@
         },
         {
             "name": "maglnet/composer-require-checker",
-            "version": "4.19.0",
+            "version": "4.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maglnet/ComposerRequireChecker.git",
-                "reference": "ac5c3593fac690c9a186c0d9b1b753fc18d04854"
+                "reference": "c62d517ef5ac2d347dd9b3d02c1cc16c0f1091e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/ac5c3593fac690c9a186c0d9b1b753fc18d04854",
-                "reference": "ac5c3593fac690c9a186c0d9b1b753fc18d04854",
+                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/c62d517ef5ac2d347dd9b3d02c1cc16c0f1091e2",
+                "reference": "c62d517ef5ac2d347dd9b3d02c1cc16c0f1091e2",
                 "shasum": ""
             },
             "require": {
                 "azjezz/psl": "^4.2.0",
                 "composer-runtime-api": "^2.0.0",
                 "ext-phar": "*",
-                "nikic/php-parser": "^5.4.0",
+                "nikic/php-parser": "^5.7.0",
                 "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
-                "symfony/console": "^7.2.1",
+                "symfony/console": "^7.4.1",
                 "webmozart/glob": "^4.7.0"
             },
             "conflict": {
@@ -2468,15 +2462,15 @@
             "require-dev": {
                 "doctrine/coding-standard": "^14.0.0",
                 "ext-zend-opcache": "*",
-                "phing/phing": "^3.0.1",
-                "php-standard-library/phpstan-extension": "^2.0",
+                "phing/phing": "^3.1.1",
+                "php-standard-library/phpstan-extension": "^2.0.2",
                 "php-standard-library/psalm-plugin": "^2.3",
-                "phpstan/phpstan": "^2.1.19",
-                "phpunit/phpunit": "^11.5.27",
+                "phpstan/phpstan": "^2.1.33",
+                "phpunit/phpunit": "^12.5.4",
                 "psalm/plugin-phpunit": "^0.19.5",
-                "roave/infection-static-analysis-plugin": "^1.38.0",
+                "roave/infection-static-analysis-plugin": "^1.42.0",
                 "spatie/temporary-directory": "^2.3.0",
-                "vimeo/psalm": "^6.13.0"
+                "vimeo/psalm": "^6.14.3"
             },
             "bin": [
                 "bin/composer-require-checker"
@@ -2521,9 +2515,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maglnet/ComposerRequireChecker/issues",
-                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/4.19.0"
+                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/4.20.0"
             },
-            "time": "2025-11-29T21:18:59+00:00"
+            "time": "2025-12-29T11:34:42+00:00"
         },
         {
             "name": "marc-mabe/php-enum",
@@ -4058,24 +4052,24 @@
         },
         {
             "name": "roave/infection-static-analysis-plugin",
-            "version": "1.42.0",
+            "version": "1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/infection-static-analysis-plugin.git",
-                "reference": "9aa9961b2deedcf08a8167551b7d6eb32c351edd"
+                "reference": "bcbbfae6f8856a342f08f645e64e7a141bb60f69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/infection-static-analysis-plugin/zipball/9aa9961b2deedcf08a8167551b7d6eb32c351edd",
-                "reference": "9aa9961b2deedcf08a8167551b7d6eb32c351edd",
+                "url": "https://api.github.com/repos/Roave/infection-static-analysis-plugin/zipball/bcbbfae6f8856a342f08f645e64e7a141bb60f69",
+                "reference": "bcbbfae6f8856a342f08f645e64e7a141bb60f69",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.2",
-                "infection/infection": "0.31.9",
+                "infection/infection": "0.32.0",
                 "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
                 "sanmai/later": "^0.1.7",
-                "vimeo/psalm": "^6.14.1"
+                "vimeo/psalm": "^6.14.3"
             },
             "conflict": {
                 "symfony/polyfill-php84": "<1.30.0"
@@ -4083,7 +4077,7 @@
             "require-dev": {
                 "azjezz/psl": "^4.2.0",
                 "doctrine/coding-standard": "^14.0.0",
-                "phpunit/phpunit": "^12.4.4",
+                "phpunit/phpunit": "^12.5.4",
                 "psalm/plugin-phpunit": "^0.19.5"
             },
             "bin": [
@@ -4108,9 +4102,9 @@
             "description": "Static analysis on top of mutation testing - prevents escaped mutants from being invalid according to static analysis",
             "support": {
                 "issues": "https://github.com/Roave/infection-static-analysis-plugin/issues",
-                "source": "https://github.com/Roave/infection-static-analysis-plugin/tree/1.42.0"
+                "source": "https://github.com/Roave/infection-static-analysis-plugin/tree/1.43.0"
             },
-            "time": "2025-12-10T10:17:12+00:00"
+            "time": "2025-12-29T09:46:14+00:00"
         },
         {
             "name": "sanmai/di-container",
@@ -6260,6 +6254,86 @@
                 }
             ],
             "time": "2025-06-24T13:30:11+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php85",
+            "version": "v1.33.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php85.git",
+                "reference": "d4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php85/zipball/d4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91",
+                "reference": "d4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php85\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.5+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php85/tree/v1.33.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-06-23T16:12:55+00:00"
         },
         {
             "name": "symfony/process",
