@@ -8,7 +8,7 @@
     "require": {
         "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
         "nikic/php-parser": "^5.7.0",
-        "phpstan/phpstan": "^2.1.37"
+        "phpstan/phpstan": "^2.1.38"
     },
     "require-dev": {
         "doctrine/coding-standard": "^14.0.0",
@@ -19,7 +19,7 @@
         "psalm/plugin-phpunit": "^0.19.5",
         "roave/infection-static-analysis-plugin": "^1.43.0",
         "squizlabs/php_codesniffer": "^4.0.1",
-        "vimeo/psalm": "^6.14.3"
+        "vimeo/psalm": "^6.15.0"
     },
     "autoload": {
         "psr-4": {
