@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Roave\PHPStan\Rules\Floats;
 
 use PHPStan\Type\FloatType;
+use PHPStan\Type\LateResolvableType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\NeverType;
 use PHPStan\Type\Type;
@@ -20,6 +21,10 @@ final class FloatTypeHelper
 
         if ($type instanceof NeverType) {
             return false;
+        }
+
+        if ($type instanceof LateResolvableType) {
+            return self::isFloat($type->resolve());
         }
 
         return ! (new FloatType())->isSuperTypeOf($type)->no();

@@ -55,6 +55,28 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
     }
 
     /**
+     * Verifies that conditional return types containing mixed are not flagged as floats.
+     *
+     * @see https://github.com/Roave/no-floaters/issues/126
+     */
+    public function testRuleDoesNotFlagConditionalReturnTypesContainingMixed(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/../asset/methodWithConditionalReturnType.php'],
+            [
+                [
+                    'Method DisallowFloatsInMethodSignatures\DummyTypeConverter::convertToNumber() cannot have (RequestedType of string is string ? float : int) as its return type - floats are not allowed.',
+                    35,
+                ],
+                [
+                    'Method DisallowFloatsInMethodSignatures\DummyTypeConverter::convertToNumber2() cannot have (RequestedType of string is string ? int : float) as its return type - floats are not allowed.',
+                    44,
+                ],
+            ],
+        );
+    }
+
+    /**
      * Verifies that the impossible scenario of a method signature is not declared in a class method
      */
     public function testRuleWillNotWorkWhenNotInClassScope(): void
