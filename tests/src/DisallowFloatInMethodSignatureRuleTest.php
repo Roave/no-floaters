@@ -55,6 +55,16 @@ final class DisallowFloatInMethodSignatureRuleTest extends RuleTestCase
     }
 
     /**
+     * Verifies that conditional return types containing mixed are not flagged as floats.
+     *
+     * @see https://github.com/Roave/no-floaters/issues/126
+     */
+    public function testRuleDoesNotFlagConditionalReturnTypesContainingMixed(): void
+    {
+        $this->analyse([__DIR__ . '/../asset/methodWithConditionalReturnType.php'], []);
+    }
+
+    /**
      * Verifies that the impossible scenario of a method signature is not declared in a class method
      */
     public function testRuleWillNotWorkWhenNotInClassScope(): void
