@@ -25,6 +25,7 @@
         "PHPStan\\Rules\\RuleErrorBuilder",
         "PHPStan\\ShouldNotHappenException",
         "PHPStan\\Type\\FloatType",
+        "PHPStan\\Type\\LateResolvableType",
         "PHPStan\\Type\\MixedType",
         "PHPStan\\Type\\NeverType",
         "PHPStan\\Type\\Type",
