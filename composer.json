@@ -15,11 +15,11 @@
         "maglnet/composer-require-checker": "^4.20.0",
         "phpstan/phpstan-phpunit": "^2.0.12",
         "phpstan/phpstan-strict-rules": "^2.0.8",
-        "phpunit/phpunit": "^12.5.9",
+        "phpunit/phpunit": "^12.5.10",
         "psalm/plugin-phpunit": "^0.19.5",
         "roave/infection-static-analysis-plugin": "^1.43.0",
         "squizlabs/php_codesniffer": "^4.0.1",
-        "vimeo/psalm": "^6.15.0"
+        "vimeo/psalm": "^6.15.1"
     },
     "autoload": {
         "psr-4": {
