@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40013359feacf3fe5beb6503d8a8486f",
+    "content-hash": "92e816f6b76a8e8b8e53cad793dd912a",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -3124,16 +3124,16 @@
         },
         {
             "name": "phpstan/phpstan-phpunit",
-            "version": "2.0.13",
+            "version": "2.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-phpunit.git",
-                "reference": "45bc1ad30669c3ebb19417d5c272b8104d155415"
+                "reference": "f7553d6c613878d04f7e7ef129d4607118cd7cd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/45bc1ad30669c3ebb19417d5c272b8104d155415",
-                "reference": "45bc1ad30669c3ebb19417d5c272b8104d155415",
+                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/f7553d6c613878d04f7e7ef129d4607118cd7cd4",
+                "reference": "f7553d6c613878d04f7e7ef129d4607118cd7cd4",
                 "shasum": ""
             },
             "require": {
@@ -3174,9 +3174,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-phpunit/issues",
-                "source": "https://github.com/phpstan/phpstan-phpunit/tree/2.0.13"
+                "source": "https://github.com/phpstan/phpstan-phpunit/tree/2.0.14"
             },
-            "time": "2026-02-09T11:32:05+00:00"
+            "time": "2026-02-10T11:57:48+00:00"
         },
         {
             "name": "phpstan/phpstan-strict-rules",
@@ -3574,16 +3574,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.10",
+            "version": "12.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1686e30f6b32d35592f878a7f56fd0421d7d56c5"
+                "reference": "9b518cb40f9474572c9f0178e96ff3dc1cf02bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1686e30f6b32d35592f878a7f56fd0421d7d56c5",
-                "reference": "1686e30f6b32d35592f878a7f56fd0421d7d56c5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9b518cb40f9474572c9f0178e96ff3dc1cf02bf1",
+                "reference": "9b518cb40f9474572c9f0178e96ff3dc1cf02bf1",
                 "shasum": ""
             },
             "require": {
@@ -3652,7 +3652,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.10"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.11"
             },
             "funding": [
                 {
@@ -3676,7 +3676,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-08T07:06:48+00:00"
+            "time": "2026-02-10T12:32:02+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
