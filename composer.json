@@ -8,13 +8,13 @@
     "require": {
         "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
         "nikic/php-parser": "^5.7.0",
-        "phpstan/phpstan": "^2.1.38"
+        "phpstan/phpstan": "^2.1.39"
     },
     "require-dev": {
         "doctrine/coding-standard": "^14.0.0",
         "maglnet/composer-require-checker": "^4.20.0",
-        "phpstan/phpstan-phpunit": "^2.0.14",
-        "phpstan/phpstan-strict-rules": "^2.0.8",
+        "phpstan/phpstan-phpunit": "^2.0.15",
+        "phpstan/phpstan-strict-rules": "^2.0.10",
         "phpunit/phpunit": "^12.5.11",
         "psalm/plugin-phpunit": "^0.19.5",
         "roave/infection-static-analysis-plugin": "^1.43.0",
