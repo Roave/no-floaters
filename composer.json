@@ -6,20 +6,20 @@
         "MIT"
     ],
     "require": {
-        "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+        "php": "~8.4.0 || ~8.5.0",
         "nikic/php-parser": "^5.7.0",
-        "phpstan/phpstan": "^2.1.39"
+        "phpstan/phpstan": "^2.1.54"
     },
     "require-dev": {
         "doctrine/coding-standard": "^14.0.0",
         "maglnet/composer-require-checker": "^4.20.0",
         "phpstan/phpstan-phpunit": "^2.0.16",
-        "phpstan/phpstan-strict-rules": "^2.0.10",
-        "phpunit/phpunit": "^12.5.11",
+        "phpstan/phpstan-strict-rules": "^2.0.11",
+        "phpunit/phpunit": "^13.1.10",
         "psalm/plugin-phpunit": "^0.19.5",
-        "roave/infection-static-analysis-plugin": "^1.43.0",
+        "roave/infection-static-analysis-plugin": "^1.44.0",
         "squizlabs/php_codesniffer": "^4.0.1",
-        "vimeo/psalm": "^6.15.1"
+        "vimeo/psalm": "^6.16.1"
     },
     "autoload": {
         "psr-4": {
@@ -40,7 +40,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "platform": {
-            "php": "8.3.99"
+            "php": "8.4.99"
         },
         "sort-packages": true
     }
