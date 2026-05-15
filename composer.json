@@ -15,7 +15,7 @@
         "maglnet/composer-require-checker": "^4.20.0",
         "phpstan/phpstan-phpunit": "^2.0.16",
         "phpstan/phpstan-strict-rules": "^2.0.10",
-        "phpunit/phpunit": "^12.5.11",
+        "phpunit/phpunit": "^13.1.10",
         "psalm/plugin-phpunit": "^0.19.5",
         "roave/infection-static-analysis-plugin": "^1.43.0",
         "squizlabs/php_codesniffer": "^4.0.1",
