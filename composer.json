@@ -7,18 +7,18 @@
     ],
     "require": {
         "php": "~8.4.0 || ~8.5.0",
-        "nikic/php-parser": "^5.7.0",
-        "phpstan/phpstan": "^2.1.54"
+        "nikic/php-parser": "^5.8.0",
+        "phpstan/phpstan": "^2.2.13"
     },
     "require-dev": {
         "doctrine/coding-standard": "^14.0.0",
-        "maglnet/composer-require-checker": "^4.20.0",
-        "phpstan/phpstan-phpunit": "^2.0.16",
-        "phpstan/phpstan-strict-rules": "^2.0.11",
-        "phpunit/phpunit": "^13.1.10",
-        "psalm/plugin-phpunit": "^0.19.5",
+        "maglnet/composer-require-checker": "^4.24.0",
+        "phpstan/phpstan-phpunit": "^2.0.18",
+        "phpstan/phpstan-strict-rules": "^2.0.12",
+        "phpunit/phpunit": "^13.3.2",
+        "psalm/plugin-phpunit": "^0.20.2",
         "roave/infection-static-analysis-plugin": "^1.44.0",
-        "squizlabs/php_codesniffer": "^4.0.2",
+        "squizlabs/php_codesniffer": "^4.0.4",
         "vimeo/psalm": "^6.16.1"
     },
     "autoload": {
