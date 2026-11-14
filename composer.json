@@ -16,7 +16,7 @@
         "phpstan/phpstan-phpunit": "^2.0.16",
         "phpstan/phpstan-strict-rules": "^2.0.11",
         "phpunit/phpunit": "^13.1.10",
-        "psalm/plugin-phpunit": "^0.19.5",
+        "psalm/plugin-phpunit": "^1.2.0",
         "roave/infection-static-analysis-plugin": "^1.44.0",
         "squizlabs/php_codesniffer": "^4.0.2",
         "vimeo/psalm": "^6.16.1"
